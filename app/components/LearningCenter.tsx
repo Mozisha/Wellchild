@@ -48,10 +48,21 @@ const articleData = [
 
 export default function LearningCenter() {
   return (
-    // UPDATED: Added overflow-hidden to prevent the arrows from extending the viewport
     <section className="bg-[#f4f4f2] py-24 sm:py-32 relative overflow-hidden">
-      {/* Decorative Pink Circle */}
-      <div className="absolute top-24 right-16 w-32 h-32 bg-[#f4bfc4] rounded-full hidden lg:block"></div>
+      {/* UPDATED: Decorative Pink Circle is now an animated motion.div */}
+      <motion.div 
+        className="absolute top-24 right-16 w-32 h-32 bg-[#f4bfc4] rounded-full hidden lg:block"
+        animate={{
+          x: [0, 15, 0, -10, 0],
+          y: [0, -10, 0, 15, 0],
+        }}
+        transition={{
+          duration: 15,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+      ></motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
