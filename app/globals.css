@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+
+.swiper-pagination-custom .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #d1d5db; 
+  opacity: 1;
+  transition: background-color 0.3s;
+}
+
+.swiper-pagination-custom .swiper-pagination-bullet-active {
+  background-color: #374151; 
+}
