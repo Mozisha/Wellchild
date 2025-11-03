@@ -5,7 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-// Data for the tags and steps (no changes here)
+// Data for the tags and steps
 const tags = [
     'Autism Evaluation', 'ADHD Testing', 'Gifted Testing', 'Learning Disability', 'Cognitive Testing', 'Speech Delay',
     'Autism Therapy', 'Behavior Challenges', 'Emotional Regulation', 'Social Skills Training', 'Daily Routines',
@@ -44,7 +44,7 @@ const processItems = [
     },
 ];
 
-// Animation Variants (no changes here)
+// Animation Variants for the main content cards
 const containerVariants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.1 } },
@@ -58,24 +58,51 @@ const itemVariants = {
 export default function HowItWorks() {
     return (
         <section className="bg-[#f4f4f2] py-24 sm:py-32 relative overflow-hidden">
-            {/* Decorative background shapes */}
-            <Image
-                src="/website-geometric-shape.png"
-                alt="Decorative Shape"
-                width={300}
-                height={300}
-                className="absolute top-1/4 left-12 -translate-x-1/2  z-0"
-            />
-            <Image
-                src="/website-geometric-shape2.png"
-                alt="Decorative Shape"
-                width={300}
-                height={300}
-                className="absolute top-1/3 right-12 translate-x-1/2  z-0"
-            />
+            {/* UPDATED: Decorative background shapes now have zigzag animations */}
+            <motion.div
+                className="absolute top-1/4 left-12 -translate-x-1/2 z-0"
+                animate={{
+                    x: [0, 20, 0, -20, 0],
+                    y: [0, -30, 0, 30, 0],
+                }}
+                transition={{
+                    duration: 12,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                }}
+            >
+                <Image
+                    src="/website-geometric-shape.png"
+                    alt="Decorative Shape"
+                    width={300}
+                    height={300}
+                />
+            </motion.div>
+            
+            <motion.div
+                className="absolute top-1/3 right-12 translate-x-1/2 z-0"
+                animate={{
+                    x: [0, -25, 0, 25, 0],
+                    y: [0, 20, 0, -20, 0],
+                }}
+                transition={{
+                    duration: 15,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                }}
+            >
+                <Image
+                    src="/website-geometric-shape2.png"
+                    alt="Decorative Shape"
+                    width={300}
+                    height={300}
+                />
+            </motion.div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                {/* Top Tag Cloud & Section Heading (no changes) */}
+                {/* Top Tag Cloud & Section Heading */}
                 <div className="flex flex-wrap justify-center items-center gap-3 mb-24">
                     {tags.map((tag) => (
                         <div key={tag} className="border border-gray-300 rounded-full px-5 py-2 text-gray-600 text-sm">
@@ -103,7 +130,6 @@ export default function HowItWorks() {
                             variants={itemVariants}
                         >
                             {item.type === 'step' ? (
-                                // --- CHANGE HERE: Added h-52 ---
                                 <div className={`p-6 rounded-lg h-52 flex flex-col ${item.isHighlighted ? 'bg-[#FCC0C5]' : 'bg-white'}`}>
                                     <div className="flex items-start gap-4">
                                         <div className="bg-[#33343B] text-white rounded-full w-8 h-8 flex-shrink-0 flex items-center justify-center font-bold">
@@ -116,7 +142,6 @@ export default function HowItWorks() {
                                     </div>
                                 </div>
                             ) : (
-                                // --- CHANGE HERE: Added h-52 ---
                                 <div className="w-full h-52 rounded-lg overflow-hidden hidden lg:block">
                                     <Image src={item.src!} alt={item.alt!} width={300} height={300} className="w-full h-full object-cover" />
                                 </div>
@@ -125,9 +150,8 @@ export default function HowItWorks() {
                     ))}
                 </motion.div>
 
-                {/* CTA Button (no changes) */}
+                {/* CTA Button */}
                 <div className="text-center mt-16">
-                    {/* UPDATED: Added cursor-pointer and hover scale effect */}
                     <button className="bg-[#FFDE59] text-[#33343B] font-bold py-3 px-10 rounded-full shadow-md hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer">
                         Start Intake
                     </button>
