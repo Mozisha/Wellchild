@@ -23,7 +23,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-[#F4F4F2] font-nanum sticky top-0 z-50 shadow-sm">
+    <nav className="bg-[#F4F4F2] sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
@@ -31,23 +31,24 @@ export default function Navbar() {
               <Image
                 src="/logo/wellchild-logo.png"
                 alt="WellChild Logo"
-                width={40}
-                height={40}
+                width={70}
+                height={70}
               />
             </Link>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-baseline space-x-8">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`font-nanum text-xl leading-8 tracking-normal text-center ${
+                    // UPDATED: Added hover effect for non-active links
+                    className={`text-xl leading-8 tracking-normal text-center transition-colors duration-200 ${
                       isActive
                         ? 'text-[#253B35] font-bold underline underline-offset-8 decoration-2'
-                        : 'text-[#4A5568]'
+                        : 'text-[#4A5568] hover:text-[#253B35] hover:underline hover:underline-offset-8 hover:decoration-2'
                     }`}
                   >
                     {link.name}
