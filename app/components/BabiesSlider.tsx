@@ -12,7 +12,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // An array of baby and child images.
-// I've included the ones you mentioned and added others from the codebase to make 8.
 const babyImages = [
   { src: '/goofy.png', alt: 'Child wearing glasses' },
   { src: '/twobabies.png', alt: 'A child smiling' },
@@ -26,7 +25,8 @@ const babyImages = [
 
 export default function BabiesSlider() {
   return (
-    <section className="bg-[#f4f4f2] py-16 sm:py-24">
+    // UPDATED: Added overflow-hidden to prevent the arrows from extending the viewport
+    <section className="bg-[#f4f4f2] py-16 sm:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <Swiper
           modules={[Navigation, A11y]}

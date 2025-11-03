@@ -48,7 +48,8 @@ const articleData = [
 
 export default function LearningCenter() {
   return (
-    <section className="bg-[#f4f4f2] py-24 sm:py-32 relative">
+    // UPDATED: Added overflow-hidden to prevent the arrows from extending the viewport
+    <section className="bg-[#f4f4f2] py-24 sm:py-32 relative overflow-hidden">
       {/* Decorative Pink Circle */}
       <div className="absolute top-24 right-16 w-32 h-32 bg-[#f4bfc4] rounded-full hidden lg:block"></div>
 
@@ -67,7 +68,6 @@ export default function LearningCenter() {
         {/* Slider Sub-header */}
         <div className="flex justify-between items-center mt-20 mb-8">
           <h3 className="text-3xl font-serif text-gray-800">Learn more about</h3>
-          {/* UPDATED: Added cursor-pointer and hover effect */}
           <button className="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 text-gray-700 font-semibold transition-transform duration-200 hover:scale-105 cursor-pointer">
             All Topics
             <ChevronDown size={16} />
@@ -116,11 +116,9 @@ export default function LearningCenter() {
           </Swiper>
 
           {/* Custom Navigation Arrows */}
-          {/* UPDATED: Added cursor-pointer and hover effect */}
           <div className="learning-center-prev absolute top-1/2 -left-4 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow-md hidden md:block transition-transform duration-200 hover:scale-110 cursor-pointer">
             <ChevronLeft className="text-gray-700" />
           </div>
-          {/* UPDATED: Added cursor-pointer and hover effect */}
           <div className="learning-center-next absolute top-1/2 -right-4 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow-md hidden md:block transition-transform duration-200 hover:scale-110 cursor-pointer">
             <ChevronRight className="text-gray-700" />
           </div>
