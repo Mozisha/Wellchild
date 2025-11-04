@@ -20,7 +20,7 @@ export default function Popup() {
         setIsOpen(true);
         // Mark it as shown for this session
         sessionStorage.setItem('popupShown', 'true');
-      }, 3000); // 3-second delay
+      }, 10000); // 10-second delay
 
       // Cleanup the timer if the component unmounts
       return () => clearTimeout(timer);
@@ -37,7 +37,6 @@ export default function Popup() {
         <>
           {/* Backdrop */}
           <motion.div
-            // UPDATED: Changed the background from dark to a light, blurred "frosted glass" effect
             className="fixed inset-0 bg-white/30 backdrop-blur-sm z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
