@@ -26,7 +26,7 @@ const speechTherapistsData = [
     rating: 4.95,
     reviews: 112,
     
-    highlights: ['Early Intervention', 'Stuttering Specialist', 'Bilingual Services'],
+    highlights: ['Early Intervention', 'Stuttering Specialist',],
     
   },
   {
