@@ -103,14 +103,7 @@ export default function FeaturedPsychologists() {
 
               <hr className="my-4" />
 
-              {/* Card Body */}
-              <div className="flex-grow">
-                
-                <div className="text-sm text-gray-500 space-x-2 mb-4">
-                  {psychologist.highlights.join(' · ')}
-                </div>
-               
-              </div>
+             
 
               {/* Card Footer/Button */}
               <div className="mt-6">

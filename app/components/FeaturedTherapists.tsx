@@ -10,7 +10,7 @@ import { Star, MapPin } from 'lucide-react';
 // UPDATED: Suffixes removed from names for a cleaner look
 const speechTherapistsData = [
   {
-    imageSrc: '/speech-therapists/michelle-mcGuinness.jpeg',
+    imageSrc: '/speech-therapists/michelle-McGuinness.jpeg',
     name: 'Michelle McGuinness',
     specialty: 'Speech-Language Pathologist',
     rating: 4.98,
@@ -103,14 +103,7 @@ export default function FeaturedTherapists() {
 
               <hr className="my-4" />
 
-              {/* Card Body */}
-              <div className="flex-grow">
-                
-                <div className="text-sm text-gray-500 space-x-2 mb-4">
-                  {therapist.highlights.join(' · ')}
-                </div>
-               
-              </div>
+             
 
               {/* Card Footer/Button */}
               <div className="mt-6">
