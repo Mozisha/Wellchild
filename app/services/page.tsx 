@@ -1,0 +1,23 @@
+// app/services/page.tsx
+import UnderConstructionPage from "../components/UnderConstructionPage";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Services | Coming Soon',
+  description: 'Our Services page is currently under construction. Please check back soon for updates from WellChild Inc.',
+  alternates: {
+    canonical: '/services',
+  },
+  robots: {
+    index: false,
+    follow: false,
+  }
+};
+
+export default function ServicesPage() {
+  return (
+    <main>
+      <UnderConstructionPage />
+    </main>
+  );
+}
