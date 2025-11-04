@@ -19,13 +19,13 @@ const testimonialsData = [
     quote: "Through the WellChild Directory, I found a psychologist for an ADHD evaluation and later an occupational therapist, all in one platform. I love that it's made just for kids' services and that I could choose between insurance and concierge options. Everything felt organized, family-friendly, and trustworthy. Highly recommend it to any parent navigating this process for the first time!",
     name: "Sofia Menendez",
     role: "Parent",
-    imageSrc: "/therapist-1.png"
+    imageSrc: "/testimonial1.png"
   },
   {
     quote: "The support and communication are great, and payments have been smooth and timely. I love that the platform is exclusively pediatric-focused, because it means I'm connecting with families who truly need my services. It feels like being part of a mission-driven network rather than just another listing site.",
     name: "Barbara Roberts",
     role: "WellChild Provider",
-    imageSrc: "/therapist-2.png"
+    imageSrc: "/whitelady.png"
   },
 ];
 

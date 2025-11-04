@@ -59,13 +59,7 @@ export default function FeaturedPsychologists() {
   return (
     <section className="bg-[#F1F5FF] py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex justify-between items-baseline mb-12">
-          <h2 className="text-4xl md:text-5xl font-serif text-[#103040]">Featured Clinical Psychologists</h2>
-          <a href="#" className="text-green-700 font-semibold underline underline-offset-4 hover:text-green-800 transition-colors">
-            See all (80+)
-          </a>
-        </div>
+        
 
         {/* Responsive Grid for Therapist Cards */}
         <motion.div
