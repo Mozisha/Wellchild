@@ -74,7 +74,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-1 flex flex-col items-start">
              <Image
-                src="/logo/wellchild-logo.png" 
+                src="/logo/well-child-logo.png" 
                 alt="WellChild Logo"
                 width={80}
                 height={80}

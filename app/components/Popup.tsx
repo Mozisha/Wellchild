@@ -66,7 +66,7 @@ export default function Popup() {
               {/* Left Side: Image */}
               <div className="flex-shrink-0 hidden md:block">
                 <Image 
-                  src="/logo/wellchild-logo.png" 
+                  src="/logo/well-child-logo.png" 
                   alt="WellChild Logo"
                   width={100}
                   height={100}

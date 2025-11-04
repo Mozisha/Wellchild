@@ -29,7 +29,7 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/">
               <Image
-                src="/logo/wellchild-logo.png"
+                src="/logo/well-child-logo.png"
                 alt="WellChild Logo"
                 width={70}
                 height={70}
