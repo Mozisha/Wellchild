@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     template: `%s | WellChild`,
   },
   
-  // Description: A concise, keyword-rich summary for search engine results.
   description: 'Find trusted pediatric specialists in Florida with no waitlist. WellChild connects families with licensed ABA therapists, speech therapists, and psychologists for autism/ADHD evaluations. Verify your insurance or book online today.',
   
   
@@ -33,12 +32,10 @@ export const metadata: Metadata = {
     'occupational therapy',
   ],
 
-  // Author & Creator Information
   authors: [{ name: 'WellChild Inc.' }],
   creator: 'WellChild Inc.',
   publisher: 'WellChild Inc.',
 
-  // --- Open Graph Metadata (for social sharing on Facebook, LinkedIn, etc.) ---
   openGraph: {
     title: 'WellChild | Top-Rated Pediatric Therapy & Evaluations in Florida',
     description: 'No waitlists. Access trusted ABA therapists, speech therapists, and clinical psychologists for your child. We make quality developmental care easy and accessible.',
@@ -56,7 +53,6 @@ export const metadata: Metadata = {
     type: 'website',
   },
 
-  // --- Twitter Card Metadata (for sharing on Twitter) ---
   twitter: {
     card: 'summary_large_image',
     title: 'WellChild | Top-Rated Pediatric Therapy & Evaluations in Florida',
@@ -64,7 +60,6 @@ export const metadata: Metadata = {
     images: ['/wellchild-image.png'], 
   },
 
-  // --- Search Engine Indexing Rules ---
   robots: {
     index: true,
     follow: true,
@@ -79,18 +74,17 @@ export const metadata: Metadata = {
     },
   },
   
-  // --- Canonical URL ---
-  // Helps prevent duplicate content issues by specifying the "preferred" version of a page.
   metadataBase: new URL('https://wellchildinc.com'), 
   alternates: {
     canonical: '/',
   },
 
   // --- Favicon ---
+  // UPDATED: Simplified to point to the new root icon files for consistency.
   icons: {
-    icon: '/logo/wellchild-logo.png',
-    shortcut: '/logo/wellchild-logo.png',
-    apple: '/logo/wellchild-logo.png',
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/icon.png',
   },
 };
 
