@@ -22,8 +22,8 @@ const benefits = [
 ];
 
 export default function ContactPage() {
-  const hubspotPortalId = "47285637";
-  const hubspotFormId = "a6cab278-127e-45bd-886a-90bd38cb3b9b";
+ const hubspotPortalId = "47285637";
+  const hubspotFormId = "a6cab278-127e-45bd-886a-90bd38cb3b9b"; 
 
   return (
     <section className="bg-white py-24 sm:py-32">
@@ -57,8 +57,7 @@ export default function ContactPage() {
             </div>
             </div>
 
-            {/* UPDATED: HubSpot form is now used here */}
-            <div className="mt-10">
+            <div className="mt-10 max-w-lg mx-auto lg:mx-0">
               <HubSpotEmbedForm portalId={hubspotPortalId} formId={hubspotFormId} />
             </div>
 
