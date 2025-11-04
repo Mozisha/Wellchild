@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa';
 import { CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
+import HubSpotEmbedForm from './HubSpotEmbedForm'; // Import the HubSpot component
 
 const socialLinks = [
     { href: 'https://www.instagram.com/wellchildinc/', icon: <FaInstagram size={24} /> },
@@ -21,6 +22,9 @@ const benefits = [
 ];
 
 export default function ContactPage() {
+  const hubspotPortalId = "47285637";
+  const hubspotFormId = "a6cab278-127e-45bd-886a-90bd38cb3b9b";
+
   return (
     <section className="bg-white py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,30 +57,11 @@ export default function ContactPage() {
             </div>
             </div>
 
-            {/* Contact Form */}
-            <form className="mt-10 space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-                <input type="text" id="name" name="name" className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email*</label>
-                <input type="email" id="email" name="email" required className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" />
-              </div>
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700">Subject</label>
-                <input type="text" id="subject" name="subject" className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500" />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message*</label>
-                <textarea id="message" name="message" rows={4} required className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"></textarea>
-              </div>
-              <div>
-                <button type="submit" className="w-full bg-[#FFDE59] text-[#33343B] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer">
-                  Send a Message
-                </button>
-              </div>
-            </form>
+            {/* UPDATED: HubSpot form is now used here */}
+            <div className="mt-10">
+              <HubSpotEmbedForm portalId={hubspotPortalId} formId={hubspotFormId} />
+            </div>
+
           </motion.div>
 
           {/* Right Column: Benefits and Image */}
