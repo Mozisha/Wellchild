@@ -70,9 +70,6 @@ export default function TermsPage() {
           If you have any questions about these Terms, please contact us at: <a href="mailto:info@wellchildinc.com" className="text-green-700 hover:underline">info@wellchildinc.com</a>.
         </p>
 
-        <p className="mt-12 border-t pt-4 text-sm text-gray-500">
-          <strong>Disclaimer:</strong> This is a template for Terms and Conditions and should not be considered legal advice. It is highly recommended that you consult with a legal professional to ensure these terms are complete and appropriate for your specific business needs.
-        </p>
 
       </motion.div>
     </div>
