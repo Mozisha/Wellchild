@@ -13,10 +13,12 @@ import CtaSection from "./components/CtaSection";
 import LearningCenter from "./components/LearningCenter";
 import FaqSection from "./components/FaqSection";
 import BabiesSlider from "./components/BabiesSlider";
+import Popup from "./components/Popup"; 
 
 export default function Home() {
   return (
     <main>
+       <Popup /> 
       <HeroSection />
      <FeatureSlider />
       <AboutSection />

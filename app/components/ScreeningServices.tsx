@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 // Data for the screening cards
@@ -12,15 +13,15 @@ const screeningData = [
     bgColor: "bg-[#4EB0B9]", 
   },
   {
-    title: "Language disorder",
+    title: "Autism Screening",
     bgColor: "bg-[#F499A8]", 
   },
   {
-    title: "Early language development",
+    title: "ADHD screening",
     bgColor: "bg-[#4090B3]", 
   },
   {
-    title: "Autism spectrum disorder",
+    title: "Language Screening",
     bgColor: "bg-[#FFD483]", 
   },
 ];
@@ -51,7 +52,7 @@ export default function ScreeningServices() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Speech screening, autism <br /> screening, ADHD screening
+          Speech screening, Autism <br /> screening, ADHD screening and Language screening.
         </motion.h2>
 
         {/* Responsive Grid for Cards */}
@@ -63,17 +64,20 @@ export default function ScreeningServices() {
           viewport={{ once: true, amount: 0.2 }}
         >
           {screeningData.map((item, index) => (
-            <motion.a
+            <motion.div
               key={index}
-              href="#" // Link to the specific service page
-              className={`block p-6 rounded-2xl text-white aspect-[4/3] flex flex-col justify-between ${item.bgColor} hover:scale-105 transition-transform duration-300`}
               variants={itemVariants}
             >
-              <h3 className="font-semibold text-xl">{item.title}</h3>
-              <div className="self-end">
-                <ArrowRight size={24} />
-              </div>
-            </motion.a>
+              <Link
+                href="/contact" // Link to the specific service page
+                className={`block p-6 rounded-2xl text-white aspect-[4/3] flex flex-col justify-between ${item.bgColor} hover:scale-105 transition-transform duration-300`}
+              >
+                <h3 className="font-semibold text-xl">{item.title}</h3>
+                <div className="self-end">
+                  <ArrowRight size={24} />
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </motion.div>
       </div>

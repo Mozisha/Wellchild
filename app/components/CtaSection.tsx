@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export default function CtaSection() {
@@ -64,9 +65,11 @@ export default function CtaSection() {
                   Verify Your coverage - get matched with in-network Clinical Psychologists, ABA therapists, or Speech therapists
                 </p>
                 {/* UPDATED: Added cursor-pointer and hover scale effect */}
-                <button className="mt-8 bg-[#FFDE59] text-[#33343B] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer">
-                  Get Started
-                </button>
+                <Link href="/contact">
+                  <button className="mt-8 bg-[#FFDE59] text-[#33343B] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer">
+                    Get Started
+                  </button>
+                </Link>
               </div>
               
             </div>

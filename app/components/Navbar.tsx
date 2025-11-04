@@ -44,7 +44,6 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    // UPDATED: Added hover effect for non-active links
                     className={`text-xl leading-8 tracking-normal text-center transition-colors duration-200 ${
                       isActive
                         ? 'text-[#253B35] font-bold underline underline-offset-8 decoration-2'
@@ -110,7 +109,7 @@ export default function Navbar() {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+              className="fixed inset-0 bg-white/30 backdrop-blur-sm z-40 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

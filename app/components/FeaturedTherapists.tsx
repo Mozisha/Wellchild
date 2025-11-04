@@ -62,9 +62,9 @@ export default function FeaturedTherapists() {
         {/* Section Header */}
         <div className="flex justify-between items-baseline mb-12">
           <h2 className="text-4xl md:text-5xl font-serif text-[#103040]">Featured ABA therapists</h2>
-          <a href="#" className="text-green-700 font-semibold underline underline-offset-4 hover:text-green-800 transition-colors">
+          <Link href="/contact" className="text-green-700 font-semibold underline underline-offset-4 hover:text-green-800 transition-colors">
             See all (300+)
-          </a>
+          </Link>
         </div>
 
         {/* Responsive Grid for Therapist Cards */}

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
@@ -51,9 +52,11 @@ export default function JoinNetwork() {
               <strong className="text-gray-800"> We make it easy to start and grow your private practice</strong>.
             </p>
             <div className="mt-8">
-              <button className="bg-[#FFDE59] text-[#33343B] font-bold py-3 px-8 rounded-full shadow-md hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer">
-                Join as a Provider
-              </button>
+              <Link href="/contact">
+                <button className="bg-[#FFDE59] text-[#33343B] font-bold py-3 px-8 rounded-full shadow-md hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer">
+                  Join as a Provider
+                </button>
+              </Link>
             </div>
           </motion.div>
 

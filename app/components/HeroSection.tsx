@@ -1,6 +1,7 @@
 // app/components/HeroSection.tsx
 'use client';
 
+import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -30,9 +31,9 @@ export default function HeroSection() {
     'Step Up Scholarship',
     'Aetna (commercial)',
     'Cigna',
-    'Evernorth',
-    'Optum',
     'United Healthcare',
+    'Optum',
+    'Evernorth',
     'Tricare',
     'Humana',
     'Florida Blue',
@@ -159,16 +160,18 @@ export default function HeroSection() {
           </div>
 
           {/* UPDATED: Added cursor-pointer and hover scale effect */}
-          <button className="w-full md:w-auto bg-[#FEC102] text-[#33343B] rounded-full px-8 py-3 font-poppins font-semibold text-sm hover:bg-[#ffca2a] transition-transform duration-200 hover:scale-105 cursor-pointer">
-            Send
-          </button>
+          <Link href="/contact">
+            <button className="w-full md:w-auto bg-[#FEC102] text-[#33343B] rounded-full px-8 py-3 font-poppins font-semibold text-sm hover:bg-[#ffca2a] transition-transform duration-200 hover:scale-105 cursor-pointer">
+              Send
+            </button>
+          </Link>
         </div>
 
         <p className="mt-6 text-sm text-[#FFFBF0] opacity-90 font-lora">
           Cant find your insurance or need faster access?{' '}
-          <a href="#" className="underline">
+          <Link href="/contact" className="underline">
             Learn about our private concierge services
-          </a>
+          </Link>
         </p>
       </div>
     </section>

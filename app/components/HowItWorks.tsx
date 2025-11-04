@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 // Data for the tags and steps
@@ -152,9 +153,11 @@ export default function HowItWorks() {
 
                 {/* CTA Button */}
                 <div className="text-center mt-16">
+                  <Link href="/contact">
                     <button className="bg-[#FFDE59] text-[#33343B] font-bold py-3 px-10 rounded-full shadow-md hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer">
                         Start Intake
                     </button>
+                  </Link>
                 </div>
             </div>
         </section>

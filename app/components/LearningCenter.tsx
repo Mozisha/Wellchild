@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
@@ -79,10 +80,12 @@ export default function LearningCenter() {
         {/* Slider Sub-header */}
         <div className="flex justify-between items-center mt-20 mb-8">
           <h3 className="text-3xl font-serif text-gray-800">Learn more about</h3>
-          <button className="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 text-gray-700 font-semibold transition-transform duration-200 hover:scale-105 cursor-pointer">
-            All Topics
-            <ChevronDown size={16} />
-          </button>
+          <Link href="/contact">
+            <button className="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 text-gray-700 font-semibold transition-transform duration-200 hover:scale-105 cursor-pointer">
+              All Topics
+              <ChevronDown size={16} />
+            </button>
+          </Link>
         </div>
 
         {/* Slider Section */}
@@ -105,7 +108,7 @@ export default function LearningCenter() {
           >
             {articleData.map((article, index) => (
               <SwiperSlide key={index}>
-                <a href="#" className="block group">
+                <Link href="/contact" className="block group">
                   <div className="bg-white  rounded-2xl shadow-md transition-shadow group-hover:shadow-xl">
                     <div className={`border-12 ${article.borderColor} rounded-xl overflow-hidden`}>
                       <Image
@@ -121,7 +124,7 @@ export default function LearningCenter() {
                       <h4 className="mt-2 font-bold text-gray-800 leading-tight">{article.title}</h4>
                     </div>
                   </div>
-                </a>
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>

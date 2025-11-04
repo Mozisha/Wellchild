@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 // Animation variants for the parent container to stagger children
@@ -45,9 +46,11 @@ export default function AboutSection() {
 
           <div className="mt-4">
             {/* UPDATED: Added cursor-pointer and hover scale effect */}
-            <button className="bg-[#FFDE59] text-[#33343B] font-[500] py-3 px-8 rounded-full shadow-md hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer">
-              Find a Provider
-            </button>
+            <Link href="/contact">
+              <button className="bg-[#FFDE59] text-[#33343B] font-[500] py-3 px-8 rounded-full shadow-md hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer">
+                Find a Provider
+              </button>
+            </Link>
           </div>
         </motion.div>
 
