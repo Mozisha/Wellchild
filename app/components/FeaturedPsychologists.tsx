@@ -3,45 +3,45 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link'; // Import Link
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Star, MapPin } from 'lucide-react';
 
-// New data for the psychologist cards
+// UPDATED: Suffixes removed from names for a cleaner look
 const psychologistsData = [
   {
-    imageSrc: '/therapist-1.png', 
-    name: 'Dr. Angela Martin, PhD',
+    imageSrc: '/clinical-psychologists/karin-adolff.png', 
+    name: 'Dr. Karin Adolff',
     specialty: 'Clinical Psychologist',
-    rating: 4.95,
-    reviews: 112,
-    location: 'Orlando, FL',
-    highlights: ['Cognitive Behavioral Therapy', 'Anxiety Specialist', 'Telehealth available'],
-    nextAvailable: 'Wed, Nov 12',
+    rating: 4.96,
+    reviews: 124,
+    location: 'Jacksonville, FL',
+    highlights: ['Autism & ADHD Evaluations', 'Anxiety Specialist', 'Telehealth available'],
+    nextAvailable: 'Wed, Dec 6',
   },
   {
-    imageSrc: '/therapist-2.png',
-    name: 'Dr. Kevin Malone, PsyD',
+    imageSrc: '/clinical-psychologists/melissa-santiago.jpeg',
+    name: 'Dr. Melissa Santiago',
     specialty: 'Child Psychologist',
-    rating: 4.88,
-    reviews: 98,
-    location: 'Tampa, FL',
-    highlights: ['Play Therapy', 'ADHD Evaluations', 'Family Counseling'],
-    nextAvailable: 'Thu, Nov 13',
+    rating: 4.92,
+    reviews: 105,
+    location: 'Fort Lauderdale, FL',
+    highlights: ['Play Therapy', 'Learning Disabilities', 'Family Counseling'],
+    nextAvailable: 'Thu, Dec 7',
   },
   {
-    imageSrc: '/therapist-3.png',
-    name: 'Dr. Pam Beesly, PhD',
+    imageSrc: '/clinical-psychologists/sharon-pedrosa.png',
+    name: 'Dr. Sharon Pedrosa',
     specialty: 'Clinical Psychologist',
-    rating: 4.91,
-    reviews: 130,
-    location: 'Miami, FL',
-    highlights: ['Autism Spectrum Specialist', 'Excellent wait time', 'Highly recommended'],
-    nextAvailable: 'Mon, Nov 17',
+    rating: 4.97,
+    reviews: 140,
+    location: 'St. Petersburg, FL',
+    highlights: ['Cognitive Behavioral (CBT)', 'Excellent wait time', 'Highly recommended'],
+    nextAvailable: 'Mon, Dec 11',
   },
 ];
 
-// Animation variants (can be reused)
+// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -57,16 +57,14 @@ const cardVariants = {
 
 export default function FeaturedPsychologists() {
   return (
-    // We can add a light background to differentiate it from the previous section
     <section className="bg-[#F1F5FF] py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex justify-between items-baseline mb-12">
-          {/* 1. Title changed here */}
-          <h2 className="text-4xl md:text-5xl font-serif text-[#103040]">Featured Clinical Psychologist</h2>
-          <Link href="/contact" className="text-green-700 font-semibold underline underline-offset-4 hover:text-green-800 transition-colors">
-            See all (300+)
-          </Link>
+          <h2 className="text-4xl md:text-5xl font-serif text-[#103040]">Featured Clinical Psychologists</h2>
+          <a href="#" className="text-green-700 font-semibold underline underline-offset-4 hover:text-green-800 transition-colors">
+            See all (80+)
+          </a>
         </div>
 
         {/* Responsive Grid for Therapist Cards */}
@@ -77,7 +75,6 @@ export default function FeaturedPsychologists() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* 2. Data source changed here */}
           {psychologistsData.map((psychologist, index) => (
             <motion.div
               key={index}
@@ -91,11 +88,11 @@ export default function FeaturedPsychologists() {
                   alt={`Photo of ${psychologist.name}`}
                   width={80}
                   height={80}
-                  className="rounded-full"
+                  // UPDATED: Added 'object-cover' for uniform image scaling
+                  className="rounded-full object-cover"
                 />
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">{psychologist.name}</h3>
-                  <p className="text-sm text-gray-600">{psychologist.specialty}</p>
                   <div className="flex items-center gap-1 mt-1">
                     <Star className="text-yellow-500 fill-yellow-500" size={16} />
                     <span className="text-sm font-bold text-gray-700">{psychologist.rating}</span>
@@ -108,21 +105,15 @@ export default function FeaturedPsychologists() {
 
               {/* Card Body */}
               <div className="flex-grow">
-                <div className="flex items-center gap-2 text-sm text-gray-700 mb-3">
-                  <MapPin size={16} />
-                  <span>{psychologist.location}</span>
-                </div>
+                
                 <div className="text-sm text-gray-500 space-x-2 mb-4">
                   {psychologist.highlights.join(' · ')}
                 </div>
-                <p className="text-sm text-gray-800 font-semibold">
-                  Next available on {psychologist.nextAvailable}
-                </p>
+               
               </div>
 
               {/* Card Footer/Button */}
               <div className="mt-6">
-                 {/* UPDATED: Changed button to Link component */}
                 <Link 
                   href="/contact" 
                   className="block text-center w-full bg-[#FFDE59] text-[#33343B] font-bold py-3 rounded-lg hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer"
