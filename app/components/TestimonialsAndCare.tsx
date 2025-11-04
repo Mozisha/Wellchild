@@ -107,7 +107,6 @@ export default function TestimonialsAndCare() {
             <div className="lg:col-span-1 flex flex-col justify-center">
               <h2 className="text-4xl font-bold leading-tight">Why families & providers love wellchild</h2>
               <p className="mt-4 text-white/90">Real stories from parents and professionals who've found their perfect match through our network.</p>
-              <Link href="/contact" className="mt-6 font-semibold underline underline-offset-4">See All Testimonials</Link>
             </div>
 
             {/* Right Slider */}
