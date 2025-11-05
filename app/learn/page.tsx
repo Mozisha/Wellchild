@@ -22,7 +22,6 @@ export default function LearnPage() {
     <main>
       <BlogHero />
       <LatestPosts />
-      <BlogCta /> 
       <JoinNetwork />
     </main>
   );
