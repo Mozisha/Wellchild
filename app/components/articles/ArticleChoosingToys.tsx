@@ -1,12 +1,17 @@
 // app/components/articles/ArticleChoosingToys.tsx
 import React from 'react';
 
-// A reusable sub-component for individual toy examples, now with a link prop
+// A reusable sub-component for individual toy examples
 const ToyExample = ({ title, link, targets, howToPlay }: { title: string, link: string, targets: string, howToPlay: string }) => (
   <div className="mt-6 border-l-4 border-gray-200 pl-4">
-    {/* UPDATED: The title is now a clickable link */}
-    <a href={link} target="_blank" rel="noopener noreferrer" className="text-xl font-bold font-serif text-gray-800 hover:text-[#51AFBA] transition-colors">
-      <h4>{title}</h4>
+    {/* UPDATED: Title is now styled clearly as a clickable link */}
+    <a 
+      href={link} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="text-xl font-bold font-serif text-[#51AFBA] hover:underline transition-colors cursor-pointer"
+    >
+      {title}
     </a>
     <p className="text-lg leading-relaxed text-gray-700 mt-2">
       <strong>Targets:</strong> {targets}

@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 const postInfo = {
   title: "Common Articulation Differences Between English and Spanish",
-  date: "November 15, 2025",
+  date: "October 15, 2025",
   heroImage: "/blog-images/hello.png", // Using a new title image
   slug: "articulation-differences-english-spanish"
 };

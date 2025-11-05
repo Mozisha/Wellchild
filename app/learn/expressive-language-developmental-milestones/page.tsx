@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 const postInfo = {
   title: "Expressive Language Developmental Milestones",
-  date: "November 16, 2025",
+  date: "October 16, 2025",
   heroImage: "/blog-images/baby-girl.png", 
   slug: "expressive-language-developmental-milestones"
 };

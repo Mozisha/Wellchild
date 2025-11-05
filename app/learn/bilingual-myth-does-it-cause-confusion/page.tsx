@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 const postInfo = {
   title: "Does Speaking Another Language at Home Cause Confusion for Kids?",
-  date: "November 13, 2025",
+  date: "October 13, 2025",
   heroImage: "/blog-images/bilingual.png", // Using a new title image
   slug: "bilingual-myth-does-it-cause-confusion"
 };

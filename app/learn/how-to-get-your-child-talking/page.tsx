@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 const postInfo = {
   title: "How to Get Your Child Talking",
-  date: "November 14, 2025",
+  date: "October 14, 2025",
   heroImage: "/blog-images/happy-baby.png", 
   slug: "how-to-get-your-child-talking"
 };

@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 const postInfo = {
   title: "Understanding Code-Switching",
-  date: "November 6, 2025",
+  date: "October 6, 2025",
   heroImage: "/blog-images/code-switching.png", 
   slug: "understanding-code-switching"
 };

@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 
 const postInfo = {
   title: "Tips for Choosing the Right Toy for Speech Development",
-  date: "November 18, 2025",
-  heroImage: "/blog-images/child-1.png", // Using a new title image
+  date: "October 18, 2025",
+  heroImage: "/blog-images/child-1.png", 
   slug: "tips-for-choosing-toys"
 };
 

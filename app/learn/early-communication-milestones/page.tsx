@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 
 const postInfo = {
   title: "Early Communication Milestones and When to Consider an Autism Evaluation",
-  date: "November 10, 2025",
+  date: "October 10, 2025",
   heroImage: "/baby.jpg", // Using a different title image
   slug: "early-communication-milestones"
 };
