@@ -8,49 +8,18 @@ import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper/modules';
 import { ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import { posts } from '../learn/data'; // Import the single source of truth
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-// Data for the learning center article cards
-const articleData = [
-  {
-    imageSrc: '/smiling-mom.jpg',
-    borderColor: 'border-[#FFD483]',
-    category: 'TIPS AND RESOURCES',
-    title: 'The Importance of Parent Involvement in Speech Therapy',
-  },
-  {
-    imageSrc: '/hello.jpg',
-    borderColor: 'border-[#FEF14B]',
-    category: 'TIPS AND RESOURCES',
-    title: 'How to Find a Speech Therapist for Your Child (or Yourself)',
-  },
-  {
-    imageSrc: '/baby.jpg',
-    borderColor: 'border-[#4EB0B9]',
-    category: 'ONLINE SPEECH THERAPY',
-    title: 'Does Online Speech Therapy Work as Well as In-Person Therapy?',
-  },
-  {
-    imageSrc: '/kids.jpg',
-    borderColor: 'border-[#FCC0C5]',
-    category: 'SPEECH AND LANGUAGE ISSUES',
-    title: 'How to Tell if Your Child Has a Speech Delay',
-  },
-  {
-    imageSrc: '/happybaby.jpg',
-    borderColor: 'border-[#4090B3]',
-    category: 'TIPS AND RESOURCES',
-    title: '10 Ways to Make Speech Therapy Practice Fun',
-  },
-];
-
 export default function LearningCenter() {
+  // This is the array of background colors for the card borders
+  const borderColors = ['bg-[#FFD483]', 'bg-[#FEF14B]', 'bg-[#4EB0B9]', 'bg-[#FCC0C5]', 'bg-[#4090B3]'];
+
   return (
     <section className="bg-[#f4f4f2] py-24 sm:py-32 relative overflow-hidden">
-      {/* UPDATED: Decorative Pink Circle is now an animated motion.div */}
       <motion.div 
         className="absolute top-24 right-16 w-32 h-32 bg-[#f4bfc4] rounded-full hidden lg:block"
         animate={{
@@ -80,7 +49,7 @@ export default function LearningCenter() {
         {/* Slider Sub-header */}
         <div className="flex justify-between items-center mt-20 mb-8">
           <h3 className="text-3xl font-serif text-gray-800">Learn more about</h3>
-          <Link href="/contact">
+          <Link href="/learn">
             <button className="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 text-gray-700 font-semibold transition-transform duration-200 hover:scale-105 cursor-pointer">
               All Topics
               <ChevronDown size={16} />
@@ -106,22 +75,29 @@ export default function LearningCenter() {
               1280: { slidesPerView: 5 },
             }}
           >
-            {articleData.map((article, index) => (
-              <SwiperSlide key={index}>
-                <Link href="/contact" className="block group">
-                  <div className="bg-white  rounded-2xl shadow-md transition-shadow group-hover:shadow-xl">
-                    <div className={`border-12 ${article.borderColor} rounded-xl overflow-hidden`}>
-                      <Image
-                        src={article.imageSrc}
-                        alt={article.title}
-                        width={300}
-                        height={200}
-                        className="w-full object-cover aspect-[4/3] transform transition-transform group-hover:scale-105"
-                      />
+            {posts.map((post, index) => (
+              <SwiperSlide key={post.slug}>
+                {/* UPDATED: The entire card structure below now matches RelatedPosts.tsx */}
+                <Link href={`/learn/${post.slug}`} className="block group">
+                  <div className="flex flex-col h-full">
+                    {/* Image Container with Colored Border */}
+                    <div className={`${borderColors[index % borderColors.length]} p-4 rounded-2xl shadow-md transition-shadow group-hover:shadow-xl`}>
+                      <div className="aspect-square relative overflow-hidden rounded-lg">
+                        <Image
+                          src={post.heroImage}
+                          alt={post.title}
+                          layout="fill"
+                          objectFit="cover"
+                          className="transform transition-transform group-hover:scale-105 duration-300"
+                        />
+                      </div>
                     </div>
-                    <div className="p-4">
-                      <p className="text-xs font-bold tracking-widest text-gray-500 uppercase">{article.category}</p>
-                      <h4 className="mt-2 font-bold text-gray-800 leading-tight">{article.title}</h4>
+                    {/* Text Content */}
+                    <div className="mt-4 px-1">
+                      <p className="text-xs font-bold tracking-widest text-gray-500 uppercase">{post.category}</p>
+                      <h4 className="mt-2 font-bold text-gray-800 leading-tight group-hover:text-[#51AFBA] transition-colors">
+                        {post.title}
+                      </h4>
                     </div>
                   </div>
                 </Link>

@@ -13,3 +13,6 @@
 .swiper-pagination-custom .swiper-pagination-bullet-active {
   background-color: #374151; 
 }
+
+.prose p + p {
+  margin-top: 1.25em;}

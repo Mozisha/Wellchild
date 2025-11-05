@@ -1,24 +1,29 @@
 // app/learn/page.tsx
-import UnderConstructionPage from "../components/UnderConstructionPage";
+import BlogHero from "../components/BlogHero";
+import LatestPosts from "../components/LatestPosts";
+import BlogCta from "../components/BlogCta"; // Import the new CTA component
 import type { Metadata } from 'next';
+import JoinNetwork from "../components/JoinNetwork";
 
 export const metadata: Metadata = {
-  title: 'Page Coming Soon',
-  description: 'This page is currently under construction. Please check back soon for updates from WellChild Inc.',
+  title: 'Blog & Learning Center',
+  description: 'Explore expert tips, parent guides, and developmental insights from the pediatric specialists at WellChild.',
   alternates: {
     canonical: '/learn',
   },
-  // We tell search engines not to index this temporary page
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   }
 };
 
 export default function LearnPage() {
   return (
     <main>
-      <UnderConstructionPage />
+      <BlogHero />
+      <LatestPosts />
+      <BlogCta /> 
+      <JoinNetwork />
     </main>
   );
 }

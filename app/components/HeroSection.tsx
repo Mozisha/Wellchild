@@ -161,7 +161,7 @@ export default function HeroSection() {
 
           {/* UPDATED: Added cursor-pointer and hover scale effect */}
           <Link href="/contact">
-            <button className="w-full md:w-auto bg-[#FEC102] text-[#33343B] rounded-full px-8 py-3 font-poppins font-semibold text-sm hover:bg-[#ffca2a] transition-transform duration-200 hover:scale-105 cursor-pointer">
+            <button className="w-full md:w-auto  text-[#33343B] rounded-full px-8 py-3 font-poppins font-semibold text-sm bg-[#FEC102] hover:bg-[#ffca2a] transition-transform duration-200 hover:scale-105 cursor-pointer">
               Send
             </button>
           </Link>
