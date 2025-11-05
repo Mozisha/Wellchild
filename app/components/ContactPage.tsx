@@ -22,8 +22,9 @@ const benefits = [
 ];
 
 export default function ContactPage() {
- const hubspotPortalId = "47285637";
-  const hubspotFormId = "a6cab278-127e-45bd-886a-90bd38cb3b9b"; 
+  // UPDATED: Replaced the old form ID with the new one your client provided.
+  const hubspotPortalId = "47285637";
+  const hubspotFormId = "16e93979-c47d-4d96-8dc7-2da00ffaf84d";
 
   return (
     <section className="bg-white py-24 sm:py-32">
