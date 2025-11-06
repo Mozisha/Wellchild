@@ -46,7 +46,7 @@ export const posts = [
     slug: "early-signs-of-autism-a-parents-guide",
     title: "Early Signs of Autism: A Parent’s Guide to Action",
     date: "October 12, 2025",
-    heroImage: "/smiling-mom.jpg",
+    heroImage: "/blog-images/signs.png",
     category: "Parent Guides",
     excerpt: "A parent's guide to understanding the early signs of Autism Spectrum Disorder (ASD) and when to seek an evaluation."
   },
@@ -54,7 +54,7 @@ export const posts = [
     slug: "supporting-children-with-autism",
     title: "Supporting Children with Autism: How ABA Therapy Helps",
     date: "October 11, 2025",
-    heroImage: "/kids.jpg",
+    heroImage: "/blog-images/support.png",
     category: "Therapy",
     excerpt: "Learn how early evaluations and Applied Behavior Analysis (ABA) therapy can make a lasting difference for children with Autism (ASD)."
   },
@@ -62,7 +62,7 @@ export const posts = [
     slug: "early-communication-milestones",
     title: "Early Communication Milestones and Autism Evaluation",
     date: "October 10, 2025",
-    heroImage: "/baby.jpg",
+    heroImage: "/blog-images/milestone.png",
     category: "Development",
     excerpt: "A guide to understanding early speech milestones and recognizing when to seek an autism evaluation for your child."
   },
