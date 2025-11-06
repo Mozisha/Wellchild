@@ -4,7 +4,7 @@ import BlogPostLayout from '@/app/components/BlogPostLayout';
 import type { Metadata } from 'next';
 
 const postInfo = {
-  title: "Tips for Choosing the Right Toy for Speech Development",
+  title: "TIPS FOR CHOOSING THE RIGHT TOY TO HELP WITH SPEECH DEVELOPMENT FOR YOUR TODDLER",
   date: "October 18, 2025",
   heroImage: "/blog-images/child-1.png", 
   slug: "tips-for-choosing-toys"
