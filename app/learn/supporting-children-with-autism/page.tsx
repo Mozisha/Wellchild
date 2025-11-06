@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 const postInfo = {
   title: "Supporting Children with Autism: How ABA Therapy Helps Children Thrive",
   date: "October 11, 2025",
-  heroImage: "/kids.jpg", // Using a new title image
+  heroImage: "/blog-images/support.png", 
   slug: "supporting-children-with-autism"
 };
 
