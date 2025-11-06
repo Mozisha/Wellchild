@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 const postInfo = {
   title: "Early Signs of Autism: A Parent’s Guide to Action",
   date: "October 12, 2025",
-  heroImage: "/smiling-mom.jpg",
+  heroImage: "/blog-images/signs.png",
   slug: "early-signs-of-autism-a-parents-guide"
 };
 
