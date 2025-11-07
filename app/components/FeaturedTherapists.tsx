@@ -10,7 +10,7 @@ import { Star, MapPin } from 'lucide-react';
 // UPDATED: Names now include correct professional credentials
 const speechTherapistsData = [
   {
-    imageSrc: '/speech-therapists/michelle-mcGuinness.jpeg',
+    imageSrc: '/speech-therapists/michelle-McGuinness.jpeg',
     name: 'Michelle McGuinness, M.A., CCC SLP',
     specialty: 'Speech-Language Pathologist',
     rating: 4.98,
