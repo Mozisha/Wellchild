@@ -116,7 +116,7 @@ export default function CustomHubSpotForm({ portalId, formId, variant = 'contact
       </div>
       <div>
         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-        <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="+234" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
+        <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
       </div>
        <div>
         <label htmlFor="services" className="block text-sm font-medium text-gray-700 mb-1">What services are you looking for (or what are your primary concerns?)</label>
