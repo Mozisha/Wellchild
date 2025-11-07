@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 export const metadata: Metadata = {
 
   title: {
-    default: 'WellChild | Pediatric ABA, Speech Therapy & ADHD/Autism Evaluations',
+    default: 'WellChild | Autism/ADHD Evaluations, Pediatric, ABA Speech Therapy',
     template: `%s | WellChild`,
   },
   
