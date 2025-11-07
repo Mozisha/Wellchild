@@ -88,9 +88,9 @@ export const metadata: Metadata = {
 
   // --- Favicon ---
   icons: {
-    icon: '/logo/wellchild-logo.png',
-    shortcut: '/logo/wellchild-logo.png',
-    apple: '/logo/wellchild-logo.png',
+    icon: '/logo/well-child-logo.png',
+    shortcut: '/logo/well-child-logo.png',
+    apple: '/logo/well-child-logo.png',
   },
 };
 
