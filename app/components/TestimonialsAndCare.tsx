@@ -127,13 +127,13 @@ export default function TestimonialsAndCare() {
                       <Image src="/quote.png" alt="Quote" width={40} height={28} />
                       <p className="mt-4 text-gray-600 italic">"{testimonial.quote}"</p>
                       <div className="mt-6 flex items-center gap-4">
-                        <Image
+                        {/* <Image
                           src={testimonial.imageSrc} 
                           alt={`Photo of ${testimonial.name}`}
                           width={80}
                           height={80}
                           className="rounded-full"
-                        />
+                        /> */}
                         <div>
                           <p className="font-bold">{testimonial.name}</p>
                           <p className="text-sm text-gray-500">{testimonial.role}</p>
