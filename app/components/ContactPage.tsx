@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa';
 import { CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
-import HubSpotEmbedForm from './HubSpotEmbedForm'; // Import the HubSpot component
+import CustomHubSpotForm from './CustomHubSpotForm'; // UPDATED: Import the custom form
 
 const socialLinks = [
     { href: 'https://www.instagram.com/wellchildinc/', icon: <FaInstagram size={24} /> },
@@ -22,9 +22,9 @@ const benefits = [
 ];
 
 export default function ContactPage() {
-  // UPDATED: Replaced the old form ID with the new one your client provided.
+  // These are the IDs for your HubSpot form.
   const hubspotPortalId = "47285637";
-  const hubspotFormId = "16e93979-c47d-4d96-8dc7-2da00ffaf84d";
+  const hubspotFormId = "16e93979-c47d-4d96-8dc7-2da00ffaf84d"; // Your Contact Form ID
 
   return (
     <section className="bg-white py-24 sm:py-32">
@@ -51,15 +51,20 @@ export default function ContactPage() {
               </div>
               <div className="flex items-center space-x-5 mt-4">
                 {socialLinks.map((social, index) => (
-                    <a key={index} href={social.href} className="text-gray-500 hover:text-green-700 transition-colors">
+                    <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-green-700 transition-colors">
                         {social.icon}
                     </a>
                 ))}
             </div>
             </div>
 
+            {/* UPDATED: Using the CustomHubSpotForm component */}
             <div className="mt-10 max-w-lg mx-auto lg:mx-0">
-              <HubSpotEmbedForm portalId={hubspotPortalId} formId={hubspotFormId} />
+              <CustomHubSpotForm 
+                portalId={hubspotPortalId} 
+                formId={hubspotFormId} 
+                variant="contact" 
+              />
             </div>
 
           </motion.div>
