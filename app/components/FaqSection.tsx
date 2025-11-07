@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-// UPDATED: FAQ content has been revised and expanded
 const faqData = [
   {
     question: 'What is WellChild Inc.',
@@ -42,7 +41,6 @@ const faqData = [
 const FaqItem = ({ faq, isOpen, onClick }: { faq: any; isOpen: boolean; onClick: () => void }) => {
   return (
     <div className="border-b border-gray-200 py-4">
-      {/* UPDATED: Added cursor-pointer */}
       <button
         onClick={onClick}
         className="flex justify-between items-center w-full text-left cursor-pointer"
@@ -82,7 +80,8 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="bg-[#F8F9FA] py-24 sm:py-32">
+    // UPDATED: Added an ID to this section
+    <section id="faq-section" className="bg-[#F8F9FA] py-24 sm:py-32">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

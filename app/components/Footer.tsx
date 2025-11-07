@@ -4,8 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaLinkedin,FaInstagram,FaFacebook, } from "react-icons/fa";
 
-
-// Data for links to keep the component clean
 const quickLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
@@ -18,7 +16,7 @@ const quickLinks = [
 ];
 
 const supportLinks = [
-    { href: '/faq', label: 'FAQ\'s' },
+    { href: '/#faq-section', label: 'FAQ\'s' },
 ];
 
 const socialLinks = [
@@ -37,10 +35,8 @@ export default function Footer() {
   return (
     <footer className="bg-[#f4f4f2] text-gray-700 font-serif">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           
-          {/* Quick Links Column */}
           <div className="md:col-span-1">
             <h3 className="text-xl font-semibold mb-6">Quick Link</h3>
             <ul className="space-y-3">
@@ -54,7 +50,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Support Column */}
           <div className="md:col-span-1">
             <h3 className="text-xl font-semibold mb-6">Support</h3>
             <ul className="space-y-3">
@@ -68,10 +63,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Empty column for spacing on medium screens */}
           <div className="hidden md:block md:col-span-1"></div>
 
-          {/* Brand Column */}
           <div className="md:col-span-1 flex flex-col items-start">
              <Image
                 src="/logo/well-child-logo.png" 
@@ -91,7 +84,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="border-t border-gray-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between items-center text-sm">
           <div className="flex space-x-6 mb-4 md:mb-0">
