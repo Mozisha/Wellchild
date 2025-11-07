@@ -21,12 +21,12 @@ export default function RelatedPosts({ currentPostSlug }: { currentPostSlug?: st
         {/* Section Header */}
         <div className="flex justify-between items-center mb-12">
           <h2 className="text-4xl md:text-5xl font-serif text-[#103040]">
-            Related Blog
+            Related Blogs
           </h2>
-          <button className="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 text-gray-700 font-semibold transition-transform duration-200 hover:scale-105 cursor-pointer">
+          {/* <button className="flex items-center gap-2 border border-gray-300 rounded-full px-4 py-2 text-gray-700 font-semibold transition-transform duration-200 hover:scale-105 cursor-pointer">
             All Topics
             <ChevronDown size={16} />
-          </button>
+          </button> */}
         </div>
 
         {/* Responsive Grid for Blog Cards */}
