@@ -1,9 +1,9 @@
 // app/learn/page.tsx
+// This page can now be a simple server component again.
 import BlogHero from "../components/BlogHero";
 import LatestPosts from "../components/LatestPosts";
-import BlogCta from "../components/BlogCta"; // Import the new CTA component
+import BlogCta from "../components/BlogCta";
 import type { Metadata } from 'next';
-import JoinNetwork from "../components/JoinNetwork";
 
 export const metadata: Metadata = {
   title: 'Blog & Learning Center',
@@ -21,8 +21,9 @@ export default function LearnPage() {
   return (
     <main>
       <BlogHero />
+      {/* The LatestPosts component now handles all of its own logic */}
       <LatestPosts />
-      <JoinNetwork />
+      <BlogCta />
     </main>
   );
 }
