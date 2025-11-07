@@ -1,4 +1,3 @@
-// app/components/FeaturedPsychologists.tsx
 'use client';
 
 import React from 'react';
@@ -10,30 +9,27 @@ import { Star, MapPin } from 'lucide-react';
 const psychologistsData = [
   {
     imageSrc: '/clinical-psychologists/karin-adolff.png', 
-    name: 'Dr. Karin Adolff',
+    name: 'Dr. Karin Adolff, Psy.D',
     specialty: 'Clinical Psychologist',
     rating: 4.96,
-    reviews: 124, // This data is still here but will not be displayed
     location: 'Jacksonville, FL',
     highlights: ['Autism & ADHD Evaluations', 'Anxiety Specialist', 'Telehealth available'],
     nextAvailable: 'Wed, Dec 6',
   },
   {
     imageSrc: '/clinical-psychologists/melissa-santiago.jpeg',
-    name: 'Dr. Melissa Santiago',
+    name: 'Dr. Melissa Santiago, Psy.D',
     specialty: 'Child Psychologist',
     rating: 4.92,
-    reviews: 105,
     location: 'Fort Lauderdale, FL',
     highlights: ['Play Therapy', 'Learning Disabilities', 'Family Counseling'],
     nextAvailable: 'Thu, Dec 7',
   },
   {
     imageSrc: '/clinical-psychologists/sharon-pedrosa.png',
-    name: 'Dr. Sharon Pedrosa',
+    name: 'Dr. Sharon Pedrosa, LP-Psy.D',
     specialty: 'Clinical Psychologist',
     rating: 4.97,
-    reviews: 140,
     location: 'St. Petersburg, FL',
     highlights: ['Cognitive Behavioral (CBT)', 'Excellent wait time', 'Highly recommended'],
     nextAvailable: 'Mon, Dec 11',
@@ -49,7 +45,9 @@ export default function FeaturedPsychologists() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-baseline mb-12">
           <h2 className="text-4xl md:text-5xl font-serif text-[#103040]">Featured Clinical Psychologists</h2>
-         
+          {/* <a href="#" className="text-green-700 font-semibold underline underline-offset-4 hover:text-green-800 transition-colors">
+            See all (80+)
+          </a> */}
         </div>
 
         <motion.div
@@ -66,15 +64,18 @@ export default function FeaturedPsychologists() {
                 <div>
                   <h3 className="text-lg font-bold text-gray-800">{psychologist.name}</h3>
                   {/* <p className="text-sm text-gray-600">{psychologist.specialty}</p> */}
-                   {/* UPDATED: Review count has been removed */}
-                  <div className="flex items-center gap-1 mt-1">
-                    <Star className="text-yellow-500 fill-yellow-500" size={16} />
-                    <span className="text-sm font-bold text-gray-700">{psychologist.rating}</span>
-                  </div>
+                   <div className="flex items-center gap-1 mt-1">
+                     <Star className="text-yellow-500 fill-yellow-500" size={16} />
+                     <span className="text-sm font-bold text-gray-700">{psychologist.rating}</span>
+                   </div>
                 </div>
               </div>
               <hr className="my-4" />
-             
+              {/* <div className="flex-grow">
+                <div className="flex items-center gap-2 text-sm text-gray-700 mb-3"><MapPin size={16} /><span>{psychologist.location}</span></div>
+                <div className="text-sm text-gray-500 space-x-2 mb-4">{psychologist.highlights.join(' · ')}</div>
+                <p className="text-sm text-gray-800 font-semibold">Next available on {psychologist.nextAvailable}</p>
+              </div> */}
               <div className="mt-6">
                 <Link href="/contact" className="block text-center w-full bg-[#FFDE59] text-[#33343B] font-bold py-3 rounded-lg hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105 cursor-pointer">
                   Book online
