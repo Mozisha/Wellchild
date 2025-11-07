@@ -6,19 +6,20 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
-// A reusable component for the feature bubbles to keep the code clean
+// A reusable component for the feature bubbles
 const FeatureBubble = ({ text, position }: { text: string, position: string }) => (
   <motion.div
-    // UPDATED: Hide on very small screens, show on sm and up for a cleaner mobile view
-    className={`absolute ${position} hidden sm:block`}
+    // UPDATED: Removed 'hidden sm:block' so bubbles are always visible
+    className={`absolute ${position}`}
     initial={{ opacity: 0, scale: 0.8 }}
     whileInView={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.5, delay: 0.3 }}
     viewport={{ once: true }}
   >
     <div className="relative">
-      <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg shadow-xl">
-        <p className="text-sm text-gray-700 whitespace-nowrap">{text}</p>
+      <div className="bg-white/80 backdrop-blur-sm p-3 md:p-4 rounded-lg shadow-xl">
+        {/* UPDATED: Removed 'whitespace-nowrap' to allow text to wrap on small screens */}
+        <p className="text-sm text-gray-700">{text}</p>
       </div>
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2">
         <div className="bg-[#1E606A] rounded-full p-1.5 shadow-md">
@@ -31,7 +32,6 @@ const FeatureBubble = ({ text, position }: { text: string, position: string }) =
 
 export default function JoinNetwork() {
   return (
-    // UPDATED: Added overflow-hidden to prevent any horizontal scroll
     <section className="bg-[#F8F9FA] py-24 sm:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -77,11 +77,10 @@ export default function JoinNetwork() {
                 className="rounded-2xl object-cover"
               />
               
-              {/* Feature Bubbles positioned relative to the container */}
-              {/* UPDATED: Position is now responsive. Sits inside on mobile, shifts out on desktop */}
-              <FeatureBubble text="Take insurance without the headache" position="top-[25%] left-0 lg:-left-[5%]" />
-              <FeatureBubble text="Fill your caseload with new families" position="top-[55%] right-0" />
-              <FeatureBubble text="Set your own schedule" position="bottom-[15%] right-0" />
+              {/* UPDATED: Feature Bubbles now use responsive positioning to fit on all screen sizes */}
+              <FeatureBubble text="Take insurance without the headache" position="top-[15%] -left-4 lg:-left-[10%]" />
+              <FeatureBubble text="Fill your caseload with new families" position="top-[45%] -right-2 lg:-right-[1%]" />
+              <FeatureBubble text="Set your own schedule" position="bottom-[10%] -left-2 lg:left-auto lg:-right-[2%]" />
             </div>
           </motion.div>
 

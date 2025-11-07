@@ -1,8 +1,8 @@
 // app/learn/page.tsx
 // This page can now be a simple server component again.
 import BlogHero from "../components/BlogHero";
+import JoinNetwork from "../components/JoinNetwork";
 import LatestPosts from "../components/LatestPosts";
-import BlogCta from "../components/BlogCta";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function LearnPage() {
       <BlogHero />
       {/* The LatestPosts component now handles all of its own logic */}
       <LatestPosts />
-      <BlogCta />
+      <JoinNetwork/>
     </main>
   );
 }
