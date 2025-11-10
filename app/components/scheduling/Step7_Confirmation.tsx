@@ -76,7 +76,7 @@ export default function Step7_Confirmation() {
           </CardContent>
       </Card>
 
-      <div className="mt-8 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+      <div className="mt-8 flex  flex-col gap-4 max-w-md mx-auto">
         <AddToCalendar {...eventDetails} />
         <Button onClick={reset} variant="outline" className="flex-1">Book Another Appointment</Button>
       </div>

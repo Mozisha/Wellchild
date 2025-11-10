@@ -8,8 +8,9 @@ export enum SchedulingStep {
   MATCHING,
   RESULTS,
   BOOK_APPOINTMENT,
-  PAYMENT,
-  CONFIRMATION,
+  PAYMENT_INFO,       // <-- Renamed/New
+  CREDIT_CARD_ENTRY,  // <-- New
+  CONFIRMATION,       // <-- New number
 }
 
 type State = {

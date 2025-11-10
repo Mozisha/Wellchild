@@ -1,15 +1,20 @@
 'use client';
 
 import { useEffect } from 'react';
+import { SchedulingStep, useSchedulingStore } from '../store/schedulingStore';
 import SchedulingLayout from '../components/scheduling/SchedulingLayout';
+
+// Import all the step components
 import Step1_PatientInfo from '../components/scheduling/Step1_PatientInfo';
 import Step2_Concerns from '../components/scheduling/Step2_Concerns';
 import Step3_Matching from '../components/scheduling/Step3_Matching';
 import Step4_Results from '../components/scheduling/Step4_Results';
 import Step5_BookAppointment from '../components/scheduling/Step5_BookAppointment';
-import Step6_PaymentDetails from '../components/scheduling/Step6_PaymentDetails';
-import Step7_Confirmation from '../components/scheduling/Step7_Confirmation';
-import { SchedulingStep, useSchedulingStore } from '../store/schedulingStore';
+
+// Import the new, renamed payment flow components
+import Step7_CreditCardEntry from '../components/scheduling/Step7_CreditCardEntry'; // The new credit card form
+import Step8_Confirmation from '../components/scheduling/Step8_Confirmation'; // The new confirmation screen
+import Step6_PaymentInfo from '../components/scheduling/Step6_PaymentInfo';
 
 export default function BookingPage() {
   const { currentStep, reset } = useSchedulingStore();
@@ -21,6 +26,7 @@ export default function BookingPage() {
     };
   }, [reset]);
   
+  // The render function now maps the correct enum to the correct component
   const renderStep = () => {
     switch (currentStep) {
       case SchedulingStep.PATIENT_INFO:
@@ -33,10 +39,15 @@ export default function BookingPage() {
         return <Step4_Results />;
       case SchedulingStep.BOOK_APPOINTMENT:
         return <Step5_BookAppointment />;
-      case SchedulingStep.PAYMENT:
-        return <Step6_PaymentDetails />;
+      
+      // Updated Payment Flow
+      case SchedulingStep.PAYMENT_INFO:
+        return <Step6_PaymentInfo />;
+      case SchedulingStep.CREDIT_CARD_ENTRY:
+        return <Step7_CreditCardEntry />;
       case SchedulingStep.CONFIRMATION:
-        return <Step7_Confirmation />;
+        return <Step8_Confirmation />;
+        
       default:
         return <Step1_PatientInfo />;
     }

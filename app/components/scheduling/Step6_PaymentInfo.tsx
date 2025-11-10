@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 
-export default function Step6_PaymentDetails() {
+export default function Step6_PaymentInfo() {
   const { prevStep, nextStep } = useSchedulingStore();
 
   return (
@@ -30,13 +30,13 @@ export default function Step6_PaymentDetails() {
               Your insurance covers our sessions.
             </p>
 
-            <div className="mt-4 bg-[#F0FFFF] border border-[#A4E8F2] p-4 rounded-lg">
-              <p className="font-semibold text-[#4EB0B9]">
+            <div className="mt-4 bg-[#D6EBE0] border border-[#A4E8F2] p-4 rounded-lg">
+              <p className="font-semibold text-[#0292B7]">
                 Cash-pay rates for ADHD Testing
                 <br />
                 This includes a comprehensive assessment and a personalized treatment plan.
               </p>
-              <ul className="list-disc pl-5 mt-2 text-[#4EB0B9] font-medium">
+              <ul className="list-disc pl-5 mt-2 text-[#0292B7] font-medium">
                 <li>$250 for the initial assessment</li>
                 <li>$2300 ADHD testing, feedback session, comprehensive written report, personalized treatment plan, and recommendations.</li>
               </ul>
@@ -47,8 +47,8 @@ export default function Step6_PaymentDetails() {
       
       <div className="mt-6 flex flex-col items-center gap-4">
         <p className="text-xs text-gray-500 text-center max-w-sm">
-          Your selections help us match you with the most suitable provider for your child's specific needs. Insurance verification will be completed during the approval process.
-        </p>
+Your selections help us match you with the most suitable provider for your child's specific needs. Insurance
+verification will be completed during the approval process.        </p>
         <div className="w-full flex flex-col gap-3 mt-2">
           <Button 
             onClick={nextStep} 

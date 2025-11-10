@@ -67,10 +67,10 @@ export default function SchedulingLayout({ children }: SchedulingLayoutProps) {
 
     return (
         <div className="min-h-screen bg-white flex flex-col">
-            <main className="flex-grow w-full  mx-auto  lg:px-8 py-10">
+            <main className="flex-grow max-w-7xl gap-4 w-full  mx-auto  lg:px-8 py-10">
                 
                 {/* Main grid for layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_2fr)] lg:gap-x-20">
+                <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] ">
 
                     {/* --- LEFT COLUMN (DESKTOP ONLY) --- */}
                     <aside className="hidden lg:flex flex-col justify-center items-center">
