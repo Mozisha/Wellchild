@@ -31,9 +31,9 @@ export default function Step5_BookAppointment() {
         What schedule fits you, we will find a provider near you. We need some basic information to connect you with a an aba therapy provider.
       </p>
 
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side: Booking Details */}
-        <div className="md:col-span-2">
+        <div className="">
           <Card>
             <CardContent className="p-6">
               <h3 className="font-bold text-lg text-gray-800">Choose your tentative appointment time</h3>
@@ -46,7 +46,7 @@ export default function Step5_BookAppointment() {
                             key={type} 
                             variant={appointmentType === type ? 'default' : 'outline'}
                             onClick={() => setAppointmentType(type as any)}
-                            className={appointmentType === type ? 'bg-teal-500 hover:bg-teal-600' : ''}
+                            className={appointmentType === type ? 'bg-[#0292B7] hover:bg-[#027a9e]' : ''}
                         >
                             {type}
                         </Button>

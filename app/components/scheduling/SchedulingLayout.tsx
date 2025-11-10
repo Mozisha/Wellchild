@@ -39,18 +39,18 @@ const ServiceCard = ({ service, isActive }: { service: typeof serviceOptions[0],
     <div
         className={cn(
             // Base styles with a transparent border to prevent layout shift on selection
-            "p-5 rounded-2xl transition-all duration-300 text-center border-2 border-transparent bg-white",
+            "p-5 rounded-2xl transition-all duration-300 text-center cursor-pointer  border border-transparent bg-white",
             // Active state styles
             { 'bg-[#0292B70D] border-[#0292B7]': isActive } 
         )}
     >
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center ">
             <div className={cn("w-16 h-16 rounded-lg flex items-center justify-center", service.iconBgColor)}>
-                <Image src={service.iconPath} alt={`${service.name} icon`} width={32} height={32} />
+                <Image src={service.iconPath} alt={`${service.name} icon`} width={25} height={25} />
             </div>
             <h3 className={cn(
                 "font-bold text-lg mt-4",
-                 isActive ? "text-[#0292B7]" : "text-gray-800"
+                 isActive ? "text-[#0292B7]" : "text-gray-800 "
             )}>
                 {service.name}
             </h3>
@@ -67,7 +67,7 @@ export default function SchedulingLayout({ children }: SchedulingLayoutProps) {
 
     return (
         <div className="min-h-screen bg-white flex flex-col">
-            <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <main className="flex-grow w-full  mx-auto  lg:px-8 py-10">
                 
                 {/* Main grid for layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,_1fr)_minmax(0,_2fr)] lg:gap-x-20">
@@ -75,8 +75,6 @@ export default function SchedulingLayout({ children }: SchedulingLayoutProps) {
                     {/* --- LEFT COLUMN (DESKTOP ONLY) --- */}
                     <aside className="hidden lg:flex flex-col justify-center items-center">
                         <div className="relative w-full max-w-xs">
-                           {/* Vertical dashed line */}
-                           <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-px bg-[repeating-linear-gradient(0deg,transparent,transparent_6px,theme(colors.gray.300)_6px,theme(colors.gray.300)_12px)]" />
                            
                            <div className="relative z-10 space-y-8">
                             {serviceOptions.map(service => (
@@ -94,9 +92,7 @@ export default function SchedulingLayout({ children }: SchedulingLayoutProps) {
                     <div>
                         {/* Mobile Header: Logo + Service Cards */}
                         <div className="lg:hidden mb-12">
-                            <div className="flex justify-center mb-8">
-                                <Image src="/logo/well-child-logo.png" alt="WellChild Logo" width={60} height={60} />
-                            </div>
+                            
                              <div className="grid grid-cols-1 gap-4">
                                 {serviceOptions.map(service => (
                                     <ServiceCard 
@@ -120,9 +116,9 @@ export default function SchedulingLayout({ children }: SchedulingLayoutProps) {
                 </div>
             </main>
             
-            <footer className="w-full bg-[#0292B7] mt-16 relative">
+            <footer className="w-full border border-t border-gray-100 mt-16 relative">
                 
-                 <div className="py-8 text-center text-white text-sm">
+                 <div className="py-8 text-center text-[#373B43] italic  text-sm">
                     <p>Your information is secure and confidential</p>
                  </div>
             </footer>

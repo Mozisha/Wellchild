@@ -2,119 +2,67 @@
 
 import { useSchedulingStore } from '../../store/schedulingStore';
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
-import { format } from "date-fns";
-import CreditCardAuthModal from './CreditCardAuthModal';
-import { Switch } from '@/components/ui/switch';
 
 export default function Step6_PaymentDetails() {
-  const { selectedProvider, appointmentDetails, prevStep, nextStep } = useSchedulingStore();
-  
-  if (!selectedProvider || !appointmentDetails) {
-    return <div>Loading appointment details...</div>;
-  }
-
-  const { date, time } = appointmentDetails;
+  const { prevStep, nextStep } = useSchedulingStore();
 
   return (
-    <div>
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center">Payment</h2>
-      <p className="mt-2 text-gray-500 text-center">We need to verify your payment</p>
-
-      <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left: Payment Info */}
-        <div className="lg:col-span-2 space-y-6">
-          <Card className="bg-white">
-            <CardContent className="p-6">
-                <div className="relative w-full h-40 rounded-lg overflow-hidden mb-6">
-                    <Image src="/super-child.png" alt="Happy child" layout="fill" objectFit="cover" />
-                </div>
-                <h3 className="font-bold text-lg text-gray-800">PAY WITH CREDIT CARD OR HSA/FSA</h3>
-                <p className="text-sm text-gray-500 mt-1">Your transaction is secure & encrypted.</p>
-                <div className="mt-4 bg-teal-50 p-4 rounded-lg text-teal-800 text-sm">
-                    <p><strong>Cash-pay rates for ADHD Testing. This includes a comprehensive evaluation and personalized treatment plan.</strong></p>
-                    <ul className="list-disc pl-5 mt-2">
-                        <li>1 hour for the initial assessment</li>
-                        <li>1 final ADHD treatment plan session, comprehensive written report, personalized treatment plan, and recommendations.</li>
-                    </ul>
-                </div>
-            </CardContent>
-          </Card>
-          <Card className="bg-white">
-            <CardContent className="p-6">
-              <h3 className="font-bold text-lg text-gray-800 mb-4">Add Credit Card</h3>
-              <div className="space-y-4">
-                 <div>
-                    <Label htmlFor="cardNumber">Card Number</Label>
-                    <Input id="cardNumber" placeholder="0162 - 0475 - 0000 - 0163" />
-                 </div>
-                 <div className="grid grid-cols-2 gap-4">
-                    <div>
-                        <Label htmlFor="expDate">Expire Date</Label>
-                        <Input id="expDate" placeholder="12/25" />
-                    </div>
-                    <div>
-                        <Label htmlFor="cvc">CVV/CVC</Label>
-                        <Input id="cvc" placeholder="254" />
-                    </div>
-                 </div>
-                 <div className="flex items-center space-x-2 pt-2">
-                    <Switch id="remember-me" />
-                    <Label htmlFor="remember-me">Remember my card</Label>
-                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-        
-        {/* Right: Summary */}
-        <div className="lg:col-span-1 space-y-6">
-            <Card className="bg-white">
-                <CardContent className="p-6">
-                    <h3 className="font-bold text-gray-800 mb-4">Appointment Details</h3>
-                    <div className="text-sm space-y-3">
-                        <div className="flex justify-between items-center">
-                            <span className="text-gray-500">Service</span>
-                            <span className="font-semibold text-gray-800">Speech Therapy</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <span className="text-gray-500">Provider</span>
-                            <span className="font-semibold text-gray-800">{selectedProvider.name}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <span className="text-gray-500">Date & Time</span>
-                            <span className="font-semibold text-gray-800">{format(date, 'MMM d, yyyy')} at {time}</span>
-                        </div>
-                        <hr />
-                        <div className="flex justify-between items-center text-lg font-bold">
-                            <span>Total</span>
-                            <span>$155.00</span>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
-            <Card className="bg-white">
-                <CardContent className="p-6">
-                    <h3 className="font-bold text-gray-800 mb-2">Provider Contact Information</h3>
-                    <p className="text-sm font-semibold">{selectedProvider.name}</p>
-                    <p className="text-sm text-gray-500">{selectedProvider.title}</p>
-                    <p className="text-sm text-gray-500 mt-2">Email: info@wellchild.com</p>
-                    <p className="text-sm text-gray-500">Office: (555) 123-4567</p>
-                </CardContent>
-            </Card>
-        </div>
+    <div className=" mx-auto">
+      <div className="text-center">
+        {/* Using a serif font for "Payment" to match the design */}
+        <h2 className="text-3xl md:text-4xl font-serif text-gray-800">Payment</h2>
+        <p className="mt-2 text-gray-500">We need to verify your payment</p>
       </div>
+
+      <Card className="mt-8  border-gray-200 rounded-2xl">
+        <CardContent className="p-6">
+          <div className="relative w-full h-40 rounded-lg overflow-hidden mb-6">
+            <Image src="/super-child.png" alt="Happy child in superhero costume" layout="fill" objectFit="cover" />
+          </div>
+
+          <div className="border border-gray-200 rounded-lg p-5">
+            <h3 className="font-serif font-semibold text-lg text-gray-800 tracking-wide">
+              PAY WITH CREDIT CARD OR HSA/FSA
+            </h3>
+            <p className="text-sm text-gray-500 mt-1">
+              Your insurance covers our sessions.
+            </p>
+
+            <div className="mt-4 bg-[#F0FFFF] border border-[#A4E8F2] p-4 rounded-lg">
+              <p className="font-semibold text-[#4EB0B9]">
+                Cash-pay rates for ADHD Testing
+                <br />
+                This includes a comprehensive assessment and a personalized treatment plan.
+              </p>
+              <ul className="list-disc pl-5 mt-2 text-[#4EB0B9] font-medium">
+                <li>$250 for the initial assessment</li>
+                <li>$2300 ADHD testing, feedback session, comprehensive written report, personalized treatment plan, and recommendations.</li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
       
-      <div className="mt-8 max-w-md mx-auto flex flex-col items-center gap-4">
-        <p className="text-sm text-gray-600 text-center">
-            Kindly sign the credit card authorization form <CreditCardAuthModal /> to proceed with your appointment.
+      <div className="mt-6 flex flex-col items-center gap-4">
+        <p className="text-xs text-gray-500 text-center max-w-sm">
+          Your selections help us match you with the most suitable provider for your child's specific needs. Insurance verification will be completed during the approval process.
         </p>
-        <div className="w-full flex gap-4">
-            <Button onClick={nextStep} className="flex-1 bg-gray-300 text-gray-500 cursor-not-allowed">Continue</Button>
-            <Button onClick={prevStep} variant="outline" className="flex-1">Back</Button>
+        <div className="w-full flex flex-col gap-3 mt-2">
+          <Button 
+            onClick={nextStep} 
+            className="w-full h-12 text-base font-semibold bg-[#FFDE59] text-black rounded-lg  hover:bg-[#ffe97a] transition-colors"
+          >
+            Continue
+          </Button>
+          <Button 
+            onClick={prevStep} 
+            variant="outline"
+            className="w-full h-12 text-base font-semibold text-gray-700 border-gray-300 rounded-lg hover:bg-gray-50"
+          >
+            Back
+          </Button>
         </div>
       </div>
     </div>

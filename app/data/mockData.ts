@@ -1,4 +1,4 @@
-import { Provider } from "../lib/types";
+import { Provider } from '../lib/types';
 
 export const speechTherapyConcerns = [
   "Child is difficult to understand or often asked to repeat",
@@ -16,38 +16,40 @@ export const speechTherapyConcerns = [
   "Limited babbling or difficulty imitating sounds/actions"
 ];
 
+// UPDATED: This now features the real therapists from your homepage
 export const mockProviders: Provider[] = [
   {
-    id: 'provider-1',
-    name: 'Dr. Michael Chen',
+    id: 'michelle-mcguinness',
+    name: 'Michelle McGuinness, M.A., CCC SLP',
     title: 'Speech-Language Pathologist',
-    imageUrl: '/clinical-psychologists/karin-adolff.png', // Placeholder image
-    specialties: ['Specializes in speech delays and articulation in children ages 2-10'],
-    about: 'Dr. Chen is passionate about helping children find their voice. He specializes in early intervention and uses play-based therapy techniques to make sessions engaging and effective.',
-    qualifications: ['MA Speech-Language Pathology, UCLA'],
-    certifications: ['CCC-SLP Certified', 'Early Intervention Specialist', 'Apraxia Specialist'],
+    imageUrl: '/speech-therapists/michelle-McGuinness.jpeg',
+    specialties: ['Specializes in Articulation Therapy and Language Delays'],
+    about: 'Michelle is passionate about helping children communicate effectively. She uses evidence-based practices to support articulation, language, and social communication skills in a playful, engaging environment.',
+    qualifications: ['M.A. in Speech-Language Pathology'],
+    certifications: ['CCC-SLP Certified', 'Telehealth Certified', 'Early Intervention Specialist'],
+    experienceYears: 7,
+  },
+  {
+    id: 'natalie-zorrilla',
+    name: 'Natalie Zorrilla, M.A., CCC SLP',
+    title: 'Pediatric Speech Therapist',
+    imageUrl: '/speech-therapists/natalie-zorrilla.jpg',
+    specialties: ['Expert in Early Intervention and Bilingual Services (English/Spanish)'],
+    about: "Natalie specializes in working with toddlers and young children to build foundational communication skills. Her bilingual background makes her a valuable resource for diverse families.",
+    qualifications: ['M.A. in Communication Sciences'],
+    certifications: ['CCC-SLP Certified', 'Bilingual Extension Certified', 'Stuttering Specialist'],
     experienceYears: 5,
   },
   {
-    id: 'provider-2',
-    name: 'Dr. Jessica Rodriguez',
+    id: 'rebecca-bequer',
+    name: 'Rebecca Bequer, M.A., CCC SLP',
     title: 'Speech-Language Pathologist',
-    imageUrl: '/clinical-psychologists/melissa-santiago.jpeg', // Placeholder image
-    specialties: ['Expertise in childhood stuttering and fluency disorders'],
-    about: 'Dr. Rodriguez provides a supportive and patient environment for children to build confidence in their speech. Her techniques are evidence-based and family-centered.',
-    qualifications: ['PhD in Communication Disorders, NYU'],
-    certifications: ['Board Certified Specialist in Fluency', 'Telehealth Certified'],
-    experienceYears: 8,
+    imageUrl: '/speech-therapists/rebecca-bequer.png',
+    specialties: ['Focuses on Feeding Therapy and oral-motor development'],
+    about: "Rebecca has extensive experience helping children with feeding and swallowing challenges. She works closely with families to make mealtimes positive and successful.",
+    qualifications: ['M.A. in Speech-Language Pathology'],
+    certifications: ['CCC-SLP Certified', 'Certified Feeding Therapist', 'PROMPT Trained'],
+    experienceYears: 9,
   },
-  {
-    id: 'provider-3',
-    name: 'Dr. Emily Carter',
-    title: 'Child Psychologist',
-    imageUrl: '/clinical-psychologists/sharon-pedrosa.png', // Placeholder image
-    specialties: ['Specializes in Autism & ADHD evaluations for young children'],
-    about: 'Dr. Carter is known for her warm, play-based approach to diagnostic evaluations, ensuring children feel comfortable and understood throughout the process.',
-    qualifications: ['Psy.D in Clinical Psychology, Stanford'],
-    certifications: ['Licensed Psychologist', 'ADOS-2 Certified'],
-    experienceYears: 12,
-  },
+  // You can add other providers here for different scenarios
 ];

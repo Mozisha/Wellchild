@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        wellchildBlue: '#0292B7',
+      },
       fontFamily: {
         // Add your custom fonts here
         'poppins': ['Poppins', 'sans-serif'],
