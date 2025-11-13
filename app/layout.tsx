@@ -3,7 +3,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { Toaster } from "@/components/ui/sonner"; 
 
+
+import QueryProvider from './providers/QueryProvider';
 // SEO-Optimized Metadata
 export const metadata: Metadata = {
 
@@ -102,9 +105,12 @@ export default function RootLayout({
   return (
     <html lang="en">
        <body className='font-lora bg-white'>
-        <Navbar />
-        {children}
-        <Footer />
+        <QueryProvider> 
+          <Navbar />
+          {children}
+          <Footer />
+        </QueryProvider>
+        <Toaster richColors position="top-right" /> 
       </body>
     </html>
   );

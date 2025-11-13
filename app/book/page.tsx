@@ -1,54 +1,56 @@
+// app/book/page.tsx (or your equivalent page file)
+
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect } from 'react'; // 1. IMPORT useEffect
 import { SchedulingStep, useSchedulingStore } from '../store/schedulingStore';
 import SchedulingLayout from '../components/scheduling/SchedulingLayout';
-
-// Import all the step components
 import Step1_PatientInfo from '../components/scheduling/Step1_PatientInfo';
 import Step2_Concerns from '../components/scheduling/Step2_Concerns';
-import Step3_Matching from '../components/scheduling/Step3_Matching';
 import Step4_Results from '../components/scheduling/Step4_Results';
 import Step5_BookAppointment from '../components/scheduling/Step5_BookAppointment';
-
-// Import the new, renamed payment flow components
-import Step7_CreditCardEntry from '../components/scheduling/Step7_CreditCardEntry'; // The new credit card form
-import Step8_Confirmation from '../components/scheduling/Step8_Confirmation'; // The new confirmation screen
 import Step6_PaymentInfo from '../components/scheduling/Step6_PaymentInfo';
+import Step7_CreditCardEntry from '../components/scheduling/Step7_CreditCardEntry';
+import Step6_ScholarshipInfo from '../components/scheduling/Step6_ScholarshipInfo';
+import Step7_ScholarshipDetails from '../components/scheduling/Step7_ScholarshipDetails';
+import Step8_Confirmation from '../components/scheduling/Step8_Confirmation';
 
 export default function BookingPage() {
-  const { currentStep, reset } = useSchedulingStore();
+  const { currentStep } = useSchedulingStore();
 
-  // Reset the store when the component unmounts (e.g., user navigates away)
-  useEffect(() => {
-    return () => {
-      reset();
-    };
-  }, [reset]);
   
-  // The render function now maps the correct enum to the correct component
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentStep]); 
   const renderStep = () => {
     switch (currentStep) {
       case SchedulingStep.PATIENT_INFO:
         return <Step1_PatientInfo />;
       case SchedulingStep.CONCERNS:
         return <Step2_Concerns />;
-      case SchedulingStep.MATCHING:
-        return <Step3_Matching />;
       case SchedulingStep.RESULTS:
         return <Step4_Results />;
       case SchedulingStep.BOOK_APPOINTMENT:
         return <Step5_BookAppointment />;
       
-      // Updated Payment Flow
-      case SchedulingStep.PAYMENT_INFO:
+      // Private Pay Path Components
+      case SchedulingStep.PRIVATE_PAY_INFO:
         return <Step6_PaymentInfo />;
-      case SchedulingStep.CREDIT_CARD_ENTRY:
+      case SchedulingStep.PRIVATE_PAY_CREDIT_CARD:
         return <Step7_CreditCardEntry />;
+
+      // Scholarship Path Components
+      case SchedulingStep.SCHOLARSHIP_INFO:
+        return <Step6_ScholarshipInfo />;
+      case SchedulingStep.SCHOLARSHIP_DETAILS:
+        return <Step7_ScholarshipDetails />;
+
+      // The final confirmation screen is shared by all paths
       case SchedulingStep.CONFIRMATION:
         return <Step8_Confirmation />;
         
       default:
+        // A reset or redirect could also go here
         return <Step1_PatientInfo />;
     }
   };

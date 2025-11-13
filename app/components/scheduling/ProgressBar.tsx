@@ -7,17 +7,29 @@ export default function ProgressBar() {
   const { currentStep } = useSchedulingStore();
 
   const steps = [
-    { label: 'Goals', color: '#F2B8EC' }, // Pink
-    { label: 'Schedule', color: '#DC3545' }, // Red
-    { label: 'Payment', color: '#4DDFFD' }, // Blue
-    { label: 'Confirmation', color: '#FFDE59' } // Yellow
+    { label: 'Goals', color: '#F2B8EC' },
+    { label: 'Schedule', color: '#DC3545' },
+    { label: 'Payment', color: '#4DDFFD' },
+    { label: 'Confirmation', color: '#FFDE59' }
   ];
   
-  const getStepIndex = (step: SchedulingStep) => {
-    if (step <= SchedulingStep.CONCERNS) return 0; // Goals
-    if (step <= SchedulingStep.BOOK_APPOINTMENT) return 1; // Schedule
-    if (step === SchedulingStep.PAYMENT) return 2; // Payment
-    if (step === SchedulingStep.CONFIRMATION) return 3; // Confirmation
+  const getStepIndex = (step: SchedulingStep): number => {
+    // Stage 1: Goals (Patient Info & Concerns)
+    if (step >= SchedulingStep.PATIENT_INFO && step <= SchedulingStep.CONCERNS) {
+      return 0;
+    }
+    // Stage 2: Schedule (Results & Booking) - CORRECTED
+    if (step >= SchedulingStep.RESULTS && step <= SchedulingStep.BOOK_APPOINTMENT) {
+      return 1;
+    }
+    // Stage 3: Payment (All payment flows)
+    if (step >= SchedulingStep.PRIVATE_PAY_INFO && step <= SchedulingStep.SCHOLARSHIP_DETAILS) {
+      return 2;
+    }
+    // Stage 4: Confirmation
+    if (step === SchedulingStep.CONFIRMATION) {
+      return 3;
+    }
     return 0;
   };
 
@@ -26,7 +38,6 @@ export default function ProgressBar() {
   return (
     <div className="w-full max-w-lg mx-auto mb-12">
       <div className="flex items-start justify-between relative">
-        {/* Dotted line background */}
         <div className="absolute top-2.5 left-0 w-full h-px bg-[repeating-linear-gradient(90deg,transparent,transparent_4px,theme(colors.gray.300)_4px,theme(colors.gray.300)_8px)]"></div>
         
         {steps.map(({ label, color }, index) => {

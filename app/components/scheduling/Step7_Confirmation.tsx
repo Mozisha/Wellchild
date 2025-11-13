@@ -6,79 +6,133 @@ import Image from 'next/image';
 import { format } from "date-fns";
 import AddToCalendar from './AddToCalendar';
 import { useSchedulingStore } from "@/app/store/schedulingStore";
+import { CalendarDays, Mail, Loader2 } from "lucide-react";
 
 export default function Step7_Confirmation() {
+  // 1. Get ALL the necessary live data from the Zustand store
   const { selectedProvider, appointmentDetails, patientInfo, reset } = useSchedulingStore();
   
+  // 2. Add a robust loading state for page refreshes or slow connections
   if (!selectedProvider || !appointmentDetails || !patientInfo) {
-    return <div>Loading confirmation details...</div>;
+    return (
+        <div className="flex flex-col items-center justify-center min-h-[400px]">
+            <Loader2 className="w-8 h-8 animate-spin text-teal-500" />
+            <p className="mt-4 text-gray-600">Loading your confirmation details...</p>
+        </div>
+    );
   }
 
+  // 3. Safely extract and format the LIVE data
   const { date, time, sessionType } = appointmentDetails;
+  
+  const calculateAge = (dob: Date): number => {
+    const today = new Date();
+    let age = today.getFullYear() - dob.getFullYear();
+    const m = today.getMonth() - dob.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--;
+    }
+    return age;
+  };
+  const patientAge = calculateAge(patientInfo.dob);
+
+  const primaryService = selectedProvider.services?.find(s => s.isPrimary) || selectedProvider.services?.[0];
+  const serviceName = primaryService?.service?.name || 'Therapy Session';
+  const totalAmount = selectedProvider.totalAmount || 0;
+
+  // Format time from "HH:mm" to "hh:mm a"
+  const [hours, minutes] = time.split(':');
+  const timeObject = new Date();
+  timeObject.setHours(Number(hours));
+  timeObject.setMinutes(Number(minutes));
+  const formattedTime = format(timeObject, 'hh:mm a');
+
+  // Create dynamic details for the "Add to Calendar" button
   const eventDetails = {
-    title: `Speech Therapy with ${selectedProvider.name}`,
-    description: `Your speech therapy appointment for ${patientInfo.childFullName}. Session type: ${sessionType}.`,
-    startTime: new Date(`${format(date, 'yyyy-MM-dd')}T${time.replace(' PM', ':00').replace(' AM', ':00')}`), // Basic time conversion
-    endTime: new Date(new Date(`${format(date, 'yyyy-MM-dd')}T${time.replace(' PM', ':00').replace(' AM', ':00')}`).getTime() + 60 * 60000), // Adds 60 mins
+    title: `${serviceName} with ${selectedProvider.user.firstName} ${selectedProvider.user.lastName}`,
+    description: `Your appointment for ${patientInfo.childFullName}. Session type: ${sessionType}.`,
+    startTime: new Date(`${format(date, 'yyyy-MM-dd')}T${time}:00`),
+    endTime: new Date(new Date(`${format(date, 'yyyy-MM-dd')}T${time}:00`).getTime() + 60 * 60000), // Adds 60 mins
     location: "Virtual/Telehealth",
   };
 
-
   return (
-    <div className="text-center">
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Appointment Confirmed!</h2>
-      <p className="mt-2 text-gray-500">Your speech therapy (slp) consultation has been successfully booked and confirmed.</p>
+    <div className="max-w-lg mx-auto text-center">
+      <h2 className="text-3xl md:text-4xl font-serif text-[#0292B7]">Appointment Confirmed!</h2>
+      <p className="mt-2 text-gray-500">Your {serviceName.toLowerCase()} consultation has been successfully booked.</p>
 
-      <Card className="mt-8 text-left max-w-xl mx-auto">
+      <Card className="mt-8 text-left bg-[#F0F7F8] border-[#D6E8EB] rounded-2xl">
         <CardContent className="p-6">
-          <div className="flex justify-between items-start border-b pb-4">
-            <div>
-              <h3 className="font-bold text-lg">Appointment Details</h3>
-              <div className="flex items-center gap-2 mt-2">
-                 <Image src={selectedProvider.imageUrl} alt={selectedProvider.name} width={40} height={40} className="rounded-full" />
-                 <div>
-                    <p className="font-semibold">{selectedProvider.name}</p>
-                    <p className="text-sm text-gray-500">Lausanne II, CA, US</p>
-                 </div>
-              </div>
-            </div>
-            <div className="text-right">
-                <p className="text-sm text-gray-500">Patient</p>
-                <p className="font-semibold">{patientInfo.childFullName} (Age 8)</p>
-            </div>
+          <div className="flex items-center gap-2 text-base font-bold text-[#0292B7] border-b border-gray-200 pb-4">
+            <CalendarDays className="w-5 h-5" />
+            <span>Appointment Details</span>
           </div>
-          <div className="grid grid-cols-2 gap-4 pt-4">
-            <div>
-                <p className="text-sm text-gray-500">Date & Time</p>
-                <p className="font-semibold">{format(date, 'EEEE, LLL d')} at {time}</p>
-                <p className="text-sm text-gray-500">Session Type</p>
-                <p className="font-semibold">{sessionType}</p>
+          
+          <div className="flex items-center gap-4 mt-4">
+             {/* Using a placeholder image as the API doesn't provide one */}
+             <Image src="/user-placeholder.png" alt={`${selectedProvider.user.firstName} ${selectedProvider.user.lastName}`} width={50} height={50} className="rounded-full" />
+             <div>
+                <p className="font-semibold text-gray-800">{selectedProvider.user.firstName} {selectedProvider.user.lastName}</p>
+                <p className="text-sm text-gray-500">{serviceName}</p>
+             </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-6 mt-6">
+            <div className="space-y-4">
+                <div>
+                    <p className="text-xs text-gray-500">Date & Time</p>
+                    <p className="font-semibold text-sm">{format(date, 'EEEE, MMM d')} at {formattedTime}</p>
+                </div>
+                 <div>
+                    <p className="text-xs text-gray-500">Session Type</p>
+                    <p className="font-semibold text-sm">{sessionType}</p>
+                </div>
+                 <div>
+                    <p className="text-xs text-gray-500">Duration</p>
+                    <p className="font-semibold text-sm">{appointmentDetails.appointmentType}</p>
+                </div>
             </div>
-            <div className="text-right">
-                <p className="text-sm text-gray-500">Confirmation #</p>
-                <p className="font-semibold">#WC-2025-001</p>
-                <p className="text-sm text-gray-500">Total</p>
-                <p className="font-semibold">$155.00</p>
+            <div className="space-y-4 text-right">
+                <div>
+                    <p className="text-xs text-gray-500">Patient</p>
+                    <p className="font-semibold text-sm">{patientInfo.childFullName} (Age {patientAge})</p>
+                </div>
+                 <div>
+                    <p className="text-xs text-gray-500">Confirmation #</p>
+                    {/* NOTE: Confirmation # is not provided by the current API, so this remains a placeholder */}
+                    <p className="font-semibold text-sm">#WC-2025-001</p>
+                </div>
+                 <div>
+                    <p className="text-xs text-gray-500">Total Paid</p>
+                    <p className="font-semibold text-sm text-green-600">${Number(totalAmount).toFixed(2)}</p>
+                </div>
             </div>
           </div>
         </CardContent>
       </Card>
       
-      <Card className="mt-6 text-left max-w-xl mx-auto">
-          <CardContent className="p-6">
-              <h3 className="font-bold text-lg mb-2">Provider Contact Information</h3>
-              <p className="font-semibold">{selectedProvider.name}</p>
-              <p className="text-sm text-gray-500">{selectedProvider.title}</p>
-              <div className="mt-2 text-sm">
-                <p>Email: info@wellchild.com</p>
-                <p>Office: (555) 123-4567</p>
+      <Card className="mt-6 text-left rounded-2xl shadow-md">
+          <CardContent className="p-5">
+              <div className="flex justify-between items-center">
+                <div>
+                    <h4 className="font-bold text-gray-800">Provider Contact Information</h4>
+                    <p className="font-semibold text-sm text-gray-700 mt-2">{selectedProvider.user.firstName} {selectedProvider.user.lastName}</p>
+                    <p className="text-xs text-gray-500">{selectedProvider.education}</p>
+                    {/* Using placeholder contact info where not provided by the API */}
+                    <p className="text-xs text-gray-500 mt-1">Email: info@wellchild.com</p>
+                    <p className="text-xs text-gray-500">Office: {selectedProvider.user.phoneNumber || '(555) 123-4567'}</p>
+                </div>
+                 <Button variant="outline" size="sm" className="text-xs h-8 bg-gray-50 shadow-sm">
+                    <Mail className="w-3 h-3 mr-1.5" />
+                    Contact Provider
+                </Button>
               </div>
           </CardContent>
       </Card>
 
-      <div className="mt-8 flex  flex-col gap-4 max-w-md mx-auto">
+      <div className="mt-8 flex flex-col gap-4">
         <AddToCalendar {...eventDetails} />
-        <Button onClick={reset} variant="outline" className="flex-1">Book Another Appointment</Button>
+        <Button onClick={reset} variant="outline" className="flex-1 h-12 font-semibold">Book Another Appointment</Button>
       </div>
     </div>
   );
