@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 
 export default function ForProviders() {
   return (
-    <UnderConstructionPage/>
+    // <UnderConstructionPage/>
+    <ProvidersPage/>
   );
 }

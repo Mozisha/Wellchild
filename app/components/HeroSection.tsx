@@ -1,100 +1,77 @@
-// app/components/HeroSection.tsx
-
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation'; // Use router for programmatic navigation
 import { ChevronDown, Loader2, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import { useSchedulingStore, PaymentOption, ServiceType } from '../store/schedulingStore';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchServices, fetchLocations, fetchPaymentOptions, Service, Location, PaymentOptionAPI } from '../services/api';
 
-// --- Animation variants and mapping function ---
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
-const mapNameToServiceType = (name: string): ServiceType | 'UNKNOWN' => {
-  const lowerCaseName = name.toLowerCase();
-  if (lowerCaseName.includes('speech')) return 'SPEECH_THERAPY';
-  if (lowerCaseName.includes('aba')) return 'ABA_THERAPY';
-  if (lowerCaseName.includes('psychology')) return 'EVALUATION';
-  return 'UNKNOWN';
-};
 
 export default function HeroSection() {
-  const router = useRouter();
-  // 1. Get state and actions from the Zustand store
-  const { serviceId, setService, setPaymentOption } = useSchedulingStore();
-  
-  // --- Data Fetching ---
+  // --- Data Fetching Hooks ---
   const { data: services = [], isLoading: isLoadingServices, isError: isErrorServices } = useQuery({ queryKey: ['services'], queryFn: fetchServices });
   const { data: locations = [] } = useQuery({ queryKey: ['locations'], queryFn: fetchLocations, staleTime: Infinity });
   const { data: paymentOptions = [] } = useQuery({ queryKey: ['paymentOptions'], queryFn: fetchPaymentOptions, staleTime: Infinity });
 
-  // --- Local UI State ---
+  // --- Local state to track the actual values for the URL ---
+  const [selectedServiceId, setSelectedServiceId] = useState<string>('');
+  const [selectedLocationId, setSelectedLocationId] = useState<string>('');
+  const [selectedPaymentValue, setSelectedPaymentValue] = useState<string>('');
+  // --- NEW: State to hold the specific insurance label ---
+  const [selectedInsuranceLabel, setSelectedInsuranceLabel] = useState<string>('');
+
+  // --- Local state for what's displayed in the UI ---
   const [locationDisplay, setLocationDisplay] = useState('');
   const [serviceDisplay, setServiceDisplay] = useState('');
   const [paymentDisplay, setPaymentDisplay] = useState('');
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-
-  // Effect to set the default service display name if it's already in the store
-  useEffect(() => {
-    if (serviceId && services.length > 0 && !serviceDisplay) {
-      const defaultService = services.find(s => s.id === serviceId);
-      if (defaultService) {
-        setServiceDisplay(defaultService.name);
-      }
-    }
-  }, [serviceId, services, serviceDisplay]);
 
   const toggleDropdown = (dropdown: string) => {
     if (isLoadingServices) return;
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
-  // 2. Handlers correctly update BOTH local UI state and global Zustand state
   const handleLocationSelect = (location: Location) => {
+    setSelectedLocationId(location.id);
     setLocationDisplay(location.name);
     setOpenDropdown(null);
   };
+
   const handleServiceSelect = (service: Service) => {
-    const serviceType = mapNameToServiceType(service.name);
-    if (serviceType !== 'UNKNOWN') {
-      setServiceDisplay(service.name);
-      // This is the key action for the SchedulingLayout
-      setService({ id: service.id, value: serviceType });
-      setOpenDropdown(null);
-    }
-  };
-  const handlePaymentSelect = (option: PaymentOptionAPI) => {
-    setPaymentDisplay(option.label);
-    // This is the key action for the payment branching logic
-    setPaymentOption(option.value as PaymentOption);
+    setSelectedServiceId(service.id);
+    setServiceDisplay(service.name);
     setOpenDropdown(null);
   };
   
-  // 3. Button is disabled until all required selections are made
-  const isButtonDisabled = isLoadingServices || isErrorServices || !serviceDisplay || !locationDisplay || !paymentDisplay;
-
-  // This handler ensures the state is set before navigating, providing a robust fallback.
-  const handleSend = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (isButtonDisabled) {
-      e.preventDefault();
-      return;
+  // --- UPDATED: This handler now also captures the insurance label ---
+  const handlePaymentSelect = (option: PaymentOptionAPI) => {
+    setSelectedPaymentValue(option.value);
+    setPaymentDisplay(option.label);
+    // If the user selects an insurance option, we store its specific label.
+    if (option.value === 'INSURANCE') {
+      setSelectedInsuranceLabel(option.label);
+    } else {
+      // If they switch to a non-insurance option, we clear the label.
+      setSelectedInsuranceLabel('');
     }
-    // The state is already set by the `onSelect` handlers, so we can just navigate.
-    // The Link component will handle the navigation to '/book'.
+    setOpenDropdown(null);
   };
+
+  const isButtonDisabled = isLoadingServices || isErrorServices || !selectedServiceId || !selectedLocationId || !selectedPaymentValue;
+
+  // --- UPDATED: The URL now includes the insuranceLabel parameter ---
+  const bookingUrl = `/book?serviceId=${selectedServiceId}&locationId=${selectedLocationId}&paymentOption=${selectedPaymentValue}&insuranceLabel=${encodeURIComponent(selectedInsuranceLabel)}`;
 
   return (
     <section 
       className="relative w-full h-screen min-h-[800px] md:min-h-[700px] flex items-center justify-center text-[#FFFBF0] overflow-hidden" 
       style={{ 
         backgroundImage: "url('/super-child.png')",
-        backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center"
       }}
@@ -109,7 +86,6 @@ export default function HeroSection() {
 
         <div className="mt-8 w-full max-w-lg md:max-w-3xl bg-white shadow-lg rounded-2xl md:rounded-full p-4 md:p-2 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-2 text-gray-500 font-poppins">
           
-          {/* Location Dropdown */}
           <div className="relative w-full flex-1">
             <div onClick={() => toggleDropdown('location')} className="flex items-center justify-between md:border-r md:border-gray-300 px-4 py-2 cursor-pointer">
               <span className={locationDisplay ? 'text-gray-800' : ''}>{locationDisplay || 'Location'}</span>
@@ -124,7 +100,6 @@ export default function HeroSection() {
             )}
           </div>
           
-          {/* Service Dropdown */}
           <div className="relative w-full flex-1">
             <div onClick={() => toggleDropdown('service')} className="flex items-center justify-between md:border-r md:border-gray-300 px-4 py-2 cursor-pointer">
               <span className={serviceDisplay ? 'text-gray-800' : ''}>
@@ -143,7 +118,6 @@ export default function HeroSection() {
             )}
           </div>
           
-          {/* Payment Dropdown */}
           <div className="relative w-full flex-1">
             <div onClick={() => toggleDropdown('payment')} className="flex items-center justify-between px-4 py-2 cursor-pointer">
               <span className={paymentDisplay ? 'text-gray-800' : ''}>{paymentDisplay || 'Payment Option'}</span>
@@ -158,16 +132,15 @@ export default function HeroSection() {
             )}
           </div>
           
-          {/* Send Button */}
           <Link
-            href="/book"
-            onClick={handleSend}
-            className={`w-full md:w-auto text-center text-[#33343B] rounded-full px-8 py-3 font-poppins font-semibold text-sm bg-[#FEC102] hover:bg-[#ffca2a] transition-all duration-200 hover:scale-105 cursor-pointer ${isButtonDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+            href={isButtonDisabled ? '#' : bookingUrl}
+            onClick={(e) => { if (isButtonDisabled) e.preventDefault(); }}
+            className={`w-full md:w-auto text-center text-[#33343B] rounded-full px-8 py-3 font-poppins font-semibold text-sm bg-[#FEC102] hover:bg-[#ffca2a] transition-all duration-200 hover:scale-105 ${isButtonDisabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
           >
             Send
           </Link>
         </div>
-
+        
         {isErrorServices && (
           <p className="mt-4 text-sm text-red-300 font-semibold text-center">
             Could not load booking options due to a network error. Please refresh the page.

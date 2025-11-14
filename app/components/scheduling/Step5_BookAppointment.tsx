@@ -16,7 +16,7 @@ export default function Step5_BookAppointment() {
   const { 
     draftId,
     selectedProvider,
-    paymentOption,
+    paymentOption, // This value comes from the URL, set on the homepage
     setAppointmentDetails,
     goToStep
   } = useSchedulingStore();
@@ -32,6 +32,8 @@ export default function Step5_BookAppointment() {
     },
     onSuccess: (response) => {
       toast.success("Appointment time reserved successfully!");
+
+      // Save the chosen date and time to the store so other components can see it
       if (date) {
         setAppointmentDetails({ 
           date, 
@@ -40,9 +42,15 @@ export default function Step5_BookAppointment() {
           sessionType: 'Video Consultation' 
         });
       }
+
+      // --- THIS IS THE CORRECTED AND COMPLETE BRANCHING LOGIC ---
       if (paymentOption === 'SCHOLARSHIP') {
         goToStep(SchedulingStep.SCHOLARSHIP_INFO);
+      } else if (paymentOption === 'INSURANCE') {
+        // Direct the user to the start of the new insurance flow
+        goToStep(SchedulingStep.INSURANCE_INFO);
       } else {
+        // Default to the Private Pay flow for 'PRIVATE_PAY' or any other option
         goToStep(SchedulingStep.PRIVATE_PAY_INFO);
       }
     },
@@ -73,7 +81,6 @@ export default function Step5_BookAppointment() {
   };
 
   if (!selectedProvider) {
-      // Improved loading state
       return (
           <div className="flex justify-center items-center min-h-[400px]">
               <Loader2 className="w-8 h-8 animate-spin text-teal-500" />
@@ -82,15 +89,11 @@ export default function Step5_BookAppointment() {
       );
   }
 
-  // --- SAFE DATA ACCESS ---
-  // Helper to safely get the primary service name and parse numeric fees
   const primaryService = selectedProvider.services?.find(s => s.isPrimary) || selectedProvider.services?.[0];
   const serviceName = primaryService?.service?.name || 'Selected Service';
-  // Safely parse fees from string to number for calculations, default to 0 if invalid
   const consultationFee = parseFloat(String(selectedProvider.consultationFee)) || 0;
   const processingFee = selectedProvider.processingFee || 0;
   const totalAmount = selectedProvider.totalAmount || (consultationFee + processingFee);
-
 
   const formatDisplayTime = (time24: string) => {
     const [hours, minutes] = time24.split(':');
@@ -157,7 +160,6 @@ export default function Step5_BookAppointment() {
           <Card className="shadow-lg border-gray-200 rounded-2xl">
             <CardContent className="p-6 space-y-4">
               <h3 className="font-bold text-lg text-gray-800">Appointment Summary</h3>
-              {/* --- DYNAMIC DATA DISPLAY FROM BACKEND --- */}
               <div className="text-sm space-y-2 text-gray-600">
                 <div className="flex justify-between"><span>Service</span> <strong>{serviceName}</strong></div>
                 <div className="flex justify-between"><span>Provider</span> <strong>{selectedProvider.user.firstName} {selectedProvider.user.lastName}</strong></div>
