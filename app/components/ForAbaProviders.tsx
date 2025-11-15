@@ -54,7 +54,7 @@ const ForAbaProviders: React.FC<ForAbaProvidersProps> = ({ onApplyClick }) => {
             onClick={onApplyClick}
             className="mt-6 bg-[#FFDE59] text-[#33343B] font-bold py-3 px-8 rounded-full shadow-md hover:bg-[#ffe680] transition-transform duration-200 hover:scale-105"
           >
-            🌟 Apply for RCM Partnership
+             Apply as a Partner
           </button>
           <p className="mt-4 text-sm text-red-600 font-semibold">Currently onboarding 5 new ABA partners across Florida this quarter.</p>
         </motion.div>

@@ -56,7 +56,7 @@ const FinalCta: React.FC<FinalCtaProps> = ({ onApplyClick }) => {
           </motion.h2>
 
           <motion.p variants={popIn} className="mt-6 max-w-2xl mx-auto text-lg text-white/90">
-            We're currently onboarding new ABA RCM partners and referral-only Speech & Psych providers across Florida. Join today to start receiving pre-qualified families within weeks.
+            We're currently onboarding new ABA partners and referral-only Speech & Psych providers across Florida. Join today to start receiving pre-qualified families within weeks.
           </motion.p>
           
           <motion.div variants={popIn} className="mt-10">
@@ -67,7 +67,7 @@ const FinalCta: React.FC<FinalCtaProps> = ({ onApplyClick }) => {
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 400, damping: 15 }}
             >
-              🌟 Apply Now — Limited RCM Spots Available
+              🌟 Apply Now — Limited Spots Available
             </motion.button>
           </motion.div>
         </motion.div>

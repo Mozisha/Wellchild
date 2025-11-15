@@ -49,7 +49,7 @@ const Faq: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const faqData = [
-    { q: "Is there a long-term contract?", a: "No. ABA partners sign short-term RCM agreements. Speech & Psych providers can cancel anytime." },
+    { q: "Is there a long-term contract?", a: "No. ABA partners sign short-term  agreements. Speech & Psych providers can cancel anytime." },
     { q: "Who owns the patient relationship?", a: "You do — always. We simply handle referrals and operations." },
     { q: "Is WellChild HIPAA-compliant?", a: "100%. We use secure, encrypted systems for all data and communication." },
     { q: "Can I join if I already have my own clients?", a: "Absolutely. WellChild supplements your caseload — you keep full independence." }
