@@ -15,7 +15,7 @@ const ForAbaProviders: React.FC<ForAbaProvidersProps> = ({ onApplyClick }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <p className="font-semibold text-[#1E606A]">FOR ABA PROVIDERS</p>
-          <h2 className="mt-2 text-4xl md:text-5xl font-serif text-gray-800">Full RCM Partnership for ABA Providers</h2>
+          <h2 className="mt-2 text-4xl md:text-5xl font-serif text-gray-800">Full  Partnership for ABA Providers</h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We manage your back office so you can focus 100% on therapy.</p>
         </motion.div>
 
